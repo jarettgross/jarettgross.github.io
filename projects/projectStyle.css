@@ -1,0 +1,83 @@
+.codeButtons{
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    background-color: #F0F0F0;
+    text-decoration: none;
+    margin-left: 40px;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 6px;
+    border-radius: 5px;
+}
+
+.codeButtons:hover{
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background-color: #E0E0E0;
+}
+
+.algorithmsCode{
+    text-align: center;
+    margin-left: auto;
+    margin-left: -5%;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.allSpecificImages{
+    margin-top: 50px;
+    margin-bottom: 60px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#summate1{
+    margin-right: 20px;
+}
+
+#summate3, #summate4{
+    margin-left: 20px;
+}
+
+.projectInformation{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-family: 'Merriweather', serif;
+    font-size: 14px;
+    margin-bottom: 200px;
+}
+
+.shortUL{
+    list-style-type: circle;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.implementedHead, .descriptionHead{
+    list-style-type: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.shortDescription{
+    float: left;
+    font-size: 13px;
+}
+
+.fullDescription{
+    float: right;
+    font-size: 13px;
+}
+
+.singleHeader{
+    font-weight: 600;
+    text-align: center;
+}

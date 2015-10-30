@@ -1,0 +1,166 @@
+
+body{
+    font: 700 1em "Arial";
+    margin: 0;
+    padding: 0;
+    padding-bottom: 50px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+a:focus{
+    outline: none;
+}
+
+ul.navUL{
+    list-style-type: none;
+    margin: 0;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+    ul.navUL li{
+        display: inline;
+    }
+    
+        ul li a.navButtons:hover, ul li a.navButtons:visited, ul li a.navButtons:link, ul li a.navButtons:active{
+            text-decoration: none;
+            margin-left: 50px;
+            padding-top: 6px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 6px;
+            border-radius: 5px;
+            color: #3D4544;
+        }
+
+#navigation{
+    padding-top: 20px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+}
+
+#myName{
+    float: left;
+    margin-top: 0;
+    font-size: 36px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+.navButtons:hover{
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background-color: #A3DAD3;
+}
+
+.navButtons{
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+    background-color: #FFFFFF;
+}
+
+#contactButton{
+    border-style: solid;
+    border-width: 1.2px;
+    border-radius: 3px;
+    border-color: #A3DAD3;
+    font-weight: 600;
+}
+
+
+#currentButton{
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    background-color: #F0F0F0;
+}
+
+#currentButton:hover{
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    background-color: #E0E0E0;
+}
+
+#selectedHeader{ /* selected projects */
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+#rowOne, #rowTwo{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#project0{
+    margin-right: 15px;
+    display: inline-block;
+}
+
+#project1{
+    margin-left: 15px;
+    display: inline-block;
+}
+
+#project2{
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.imageButton{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.imageText{
+    position: absolute;
+    text-align: center;
+    margin-top: -11px; /*FIXME*/
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 100%;
+    max-width: 400px; /*FIXME*/
+    -moz-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    color: #BFFFF7;
+    background-color: #2B2B2B;
+    top: 0px;
+    overflow: hidden;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+.imageText:hover{
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    color: #000000;
+    background-color: #BFFFF7;
+}
+
+.imageButton:hover .imageText{
+    -moz-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    color: #000000;
+    background-color: #BFFFF7;
+}
+

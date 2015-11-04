@@ -1,10 +1,9 @@
-.boldedText{
-    font-weight: 600;
+body{
+    font-size: 14px;
 }
 
-#myResume{
-    width: 100%;
-    margin-left, margin-right: auto;
+.boldedText{
+    font-weight: 600;
 }
 
 #myResumeName{
@@ -38,5 +37,19 @@
 
 .indentText{
     float: left;
+    width: 35%;
+}
+
+.longerIndentText{
+    float: left;
     width: 70%;
+}
+
+#programmingList{
+    margin-left: 30%;
+    list-style-type: circle;
+}
+
+#additionalWork{
+    margin-bottom: 50px;
 }

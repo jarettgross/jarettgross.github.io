@@ -75,6 +75,7 @@
 .fullDescription{
     float: right;
     font-size: 13px;
+    max-width: 450px;
     margin-bottom: 60px;
 }
 

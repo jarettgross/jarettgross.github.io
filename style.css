@@ -43,6 +43,7 @@ ul.navUL{
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 5px;
+    font-size: 16px;
 }
 
 #myName{
@@ -51,6 +52,11 @@ ul.navUL{
     font-size: 36px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+}
+
+#myNameLink, #myNameLink:visited, #myNameLink:hover, #myNameLink:active{
+    text-decoration: none;
+    color: #000000;
 }
 
 .navButtons:hover{
@@ -143,7 +149,7 @@ ul.navUL{
     top: 0px;
     overflow: hidden;
     font-weight: 600;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .imageText:hover{
@@ -151,7 +157,7 @@ ul.navUL{
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .imageButton:hover .imageText{
@@ -159,6 +165,6 @@ ul.navUL{
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
     transition: all .2s ease-in;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 

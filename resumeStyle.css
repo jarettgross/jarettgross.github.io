@@ -1,0 +1,42 @@
+.boldedText{
+    font-weight: 600;
+}
+
+#myResume{
+    width: 100%;
+    margin-left, margin-right: auto;
+}
+
+#myResumeName{
+    margin: 0;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#contactInfo{
+    margin: 0;
+    text-align: center;
+}
+
+.topText{
+    float: left;
+    width: 14%;
+    margin-left: 16%;
+}
+
+.topHeaderText{
+    float: left;
+    width: 50%;
+}
+
+.indentSpan{
+    float: left;
+    width: 14%;
+    margin-left: 16%;
+}
+
+.indentText{
+    float: left;
+    width: 70%;
+}

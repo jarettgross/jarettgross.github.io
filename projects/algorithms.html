@@ -35,11 +35,17 @@
                 <h1 class="singleHeader">Implemented Algorithms</h1>
                 
                 <div class="algorithmsCode">
-                    <a class="codeButtons" id="closestPairs" href="https://github.com/jarettgross/implemented-algorithms/tree/master/closest_pairs">closest pairs</a>
-                    <a class="codeButtons" id="hashTable" href="https://github.com/jarettgross/implemented-algorithms/tree/master/hash_table">hash table</a>
-                    <a class="codeButtons" id="skipList" href="https://github.com/jarettgross/implemented-algorithms/tree/master/skip_list">skip list</a>
-                    <a class="codeButtons" id="priorityQueue" href="https://github.com/jarettgross/implemented-algorithms/tree/master/priority_queue">priority queue</a>
-                    <a class="codeButtons" id="logReg" href="https://github.com/jarettgross/implemented-algorithms/tree/master/logistic_regression">logistic regression</a>
+                    <div>
+                        <a class="codeButtons" id="closestPairs" href="https://github.com/jarettgross/implemented-algorithms/tree/master/closest_pairs">closest pairs</a>
+                        <a class="codeButtons" id="hashTable" href="https://github.com/jarettgross/implemented-algorithms/tree/master/hash_table">hash table</a>
+                        <a class="codeButtons" id="skipList" href="https://github.com/jarettgross/implemented-algorithms/tree/master/skip_list">skip list</a>
+                        <a class="codeButtons" id="priorityQueue" href="https://github.com/jarettgross/implemented-algorithms/tree/master/priority_queue">priority queue</a>
+                    </div>
+                    <div id="algoRowTwo">
+                        <a class="matlabButtons" id="logReg" href="https://github.com/jarettgross/implemented-algorithms/tree/master/logistic_regression">logistic regression</a>
+                        <a class="matlabButtons" id="adaboost" href="https://github.com/jarettgross/implemented-algorithms/blob/master/adaboost/AdaBoost.m">adaBoost</a>
+                        <a class="matlabButtons" id="baggedtrees" href="https://github.com/jarettgross/implemented-algorithms/blob/master/bagged_decision_trees/BaggedTrees.m">bagged decision trees</a>
+                    </div>
                 </div>
                 
             </div>
@@ -66,6 +72,12 @@
                         <li>
                             <div>Logistic Regression (Matlab)</div>
                         </li>
+                        <li>
+                            <div>AdaBoost (Matlab)</div>
+                        </li>
+                        <li>
+                            <div>Bagged Decision Trees (Matlab)</div>
+                        </li>
                     </ul>
                 </div>
                 <div class="fullDescription">
@@ -76,9 +88,12 @@
                     a hash table that maps strings to specific positions in the
                     table based on the hashing; Dijkstra's shortest paths algorithm
                     that computes the shortest paths in a graph; a skip list which
-                    performs insertion, deletion, and find in runtime O(logn);
-                    A logistic regression algorithm that utilizes gradient descent
-                    to learn a model on data.
+                    performs insertion, deletion, and find in runtime O(logn).<br><br>
+                    In Matlab, I implemented three algorithms used in machine learning:
+                    a logistic regression algorithm that utilizes gradient descent
+                    to learn a model on data; the AdaBoost algorithm using decision stumps
+                    learned from Matlab's fitctree function as my weak learners; an algorithm
+                    for bagging decision trees to compute the out of bag error for a dataset.
                 </div>
             </div>
         </body>

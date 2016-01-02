@@ -123,7 +123,13 @@ ul.navUL{
 }
 
 #project2{
+    margin-right: 15px;
     margin-top: 40px;
+    display: inline-block;
+}
+
+#project3{
+    margin-left: 15px;
     display: inline-block;
 }
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8"> 
+            <title>Dungeon</title>
+            <link rel="stylesheet" href="../style.css"/>
+            <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="projectStyle.css"/>
+			<link rel="stylesheet" href="procGenStyle.css"/>
+            <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
+			<script>
+				ROOM_TRIES = 50;
+				SQUARE_SIZE = 15;
+			</script>
+			<script src="procGenDungeon.js"></script>
+			<script>
+				document.addEventListener("DOMContentLoaded",
+					function() {
+						document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
+						document.getElementById("squareSizeVar").innerHTML = SQUARE_SIZE;
+								
+						draw();
+						document.getElementById("dungeon").addEventListener("click", function() { clearCanvas(); draw(); }, false);
+						
+						document.getElementById("roomTriesSlider").addEventListener("input",
+							function() {
+								ROOM_TRIES = document.getElementById("roomTriesSlider").value;
+								document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
+							}
+						, false);
+
+						document.getElementById("squareSizeSlider").addEventListener("input",
+							function() {
+								SQUARE_SIZE = parseInt(document.getElementById("squareSizeSlider").value);
+								MIN_ROOM_SIZE = 4 * SQUARE_SIZE;
+								MAX_ROOM_ADDITION = 4 * SQUARE_SIZE;
+								HEIGHT_WIDTH_DIFFERENCE = 2 * SQUARE_SIZE;
+								document.getElementById("squareSizeVar").innerHTML = SQUARE_SIZE;
+							}
+						, false);
+							
+					}, false);
+				
+			</script>
+        </head>
+        
+        <body>
+            <nav id="navigation">
+                <h2 id="myName"><a id="myNameLink" href="../..">Jarett Gross</a></h2>
+                <ul class="navUL">
+                    <li>
+                        <a class="navButtons" id="currentButton" href="../../">projects</a>
+                    </li>
+                    <li>
+                        <a class="navButtons" href="../resume.html">r&eacute;sum&eacute;</a>
+                    </li>
+                    <li>
+                        <a class="navButtons" id="gitHubButton" href="https://github.com/jarettgross">GitHub</a>
+                    </li>
+                    <li>
+                        <a class="navButtons" id="contactButton" href="mailto:jarett@wustl.edu">contact</a>
+                    </li>
+
+                </ul>
+            </nav>
+            
+            <br><br>
+            
+            <div class="singleDisplay">
+                <h1 class="singleHeader">Procedurally Generated Dungeon</h1>
+                
+                <div class="procGenCanvas">
+                    <canvas id="dungeon" width="750" height="500"></canvas>
+        
+					<div id="varSliders">
+						<span id="roomTriesText">Maximum number of rooms</span>
+						<input id="roomTriesSlider" type="range" min="2" max="100" value="50" step="1" />
+						<span id="roomTriesVar"></span>
+						<br>
+						<span id="squareSizeText">Size of each square</span>
+						<input id="squareSizeSlider" type="range" min="5" max="30" value="15" step="5" />
+						<span id="squareSizeVar"></span>
+					</div>
+                </div>
+                
+            </div>
+            
+            <div class="projectInformation">
+                <div class="shortDescription">
+                    <ul class="shortUL">
+                        <li class="implementedHead">
+                            <div>Implemented</div>
+                            <br>
+                        </li>
+                        <li>
+                            <div>Procedurally Generated Dungeon (JavaScript)</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="fullDescription">
+                    <span class="descriptionHead">Description</span>
+                    <br><br>
+                </div>
+            </div>
+        </body>
+    </html>

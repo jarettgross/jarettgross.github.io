@@ -19,6 +19,10 @@ canvas {
     text-align: center;
 }
 
+#squareSizeSlider {
+    margin-top: 5px;
+}
+
 .shortUL{
     list-style-type: circle;
     margin-left: 0;
@@ -48,3 +52,108 @@ canvas {
     font-weight: 600;
     text-align: center;
 }
+
+#createDungeonButton {
+    margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+    display: block;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#createDungeonButton:hover {
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+}
+input[type=range]:focus {
+	outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 7px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 0px 0px 0px #000000;
+	background: #FFFFFF;
+	border-radius: 5px;
+	border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+	box-shadow: 0px 0px 0px #000000;
+	border: 1px solid #000000;
+	height: 16px;
+	width: 26px;
+	border-radius: 6px;
+	background: #000000;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -5.5px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #FFFFFF;
+}
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 7px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 0px 0px 0px #000000;
+	background: #FFFFFF;
+	border-radius: 5px;
+	border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+	box-shadow: 0px 0px 0px #000000;
+	border: 1px solid #000000;
+	height: 16px;
+	width: 26px;
+	border-radius: 6px;
+	background: #000000;
+	cursor: pointer;
+}
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 7px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	border-radius: 38px;
+	box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-fill-upper {
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	border-radius: 38px;
+	box-shadow: 0px 0px 0px #000000;
+}
+input[type=range]::-ms-thumb {
+	box-shadow: 0px 0px 0px #000000;
+	border: 1px solid #000000;
+	height: 16px;
+	width: 26px;
+	border-radius: 6px;
+	background: #000000;
+	cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+	background: #FFFFFF;
+}
+input[type=range]:focus::-ms-fill-upper {
+	background: #FFFFFF;
+}
+

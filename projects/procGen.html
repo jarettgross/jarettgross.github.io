@@ -25,7 +25,11 @@
 						document.getElementById("roomTriesSlider").addEventListener("input",
 							function() {
 								ROOM_TRIES = document.getElementById("roomTriesSlider").value;
-								document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
+								if (ROOM_TRIES < 10) {
+									document.getElementById("roomTriesVar").innerHTML = "0" + ROOM_TRIES;
+								} else {
+									document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
+								}
 							}
 						, false);
 
@@ -35,7 +39,11 @@
 								MIN_ROOM_SIZE = 4 * SQUARE_SIZE;
 								MAX_ROOM_ADDITION = 4 * SQUARE_SIZE;
 								HEIGHT_WIDTH_DIFFERENCE = 2 * SQUARE_SIZE;
-								document.getElementById("squareSizeVar").innerHTML = SQUARE_SIZE;
+								if (ROOM_TRIES < 10) {
+									document.getElementById("squareSizeVar").innerHTML = "0" + SQUARE_SIZE;
+								} else {
+									document.getElementById("squareSizeVar").innerHTML = SQUARE_SIZE;
+								}
 							}
 						, false);
 							
@@ -79,7 +87,7 @@
 				
 				<div id="varSliders">
 					<span id="roomTriesText">Maximum number of rooms</span>
-					<input id="roomTriesSlider" type="range" min="2" max="100" value="50" step="1" />
+					<input id="roomTriesSlider" type="range" min="2" max="99" value="50" step="1" />
 					<span id="roomTriesVar"></span>
 					<br>
 					<span id="squareSizeText">Size of each square</span>

@@ -35,6 +35,7 @@ ul.navUL{
         }
 
 #navigation{
+    display: -webkit-flex;
     display: flex;
     justify-content: center;
     align-items: baseline;

@@ -15,10 +15,7 @@ a:focus{
 
 ul.navUL{
     list-style-type: none;
-    margin: 0;
-    margin-top: 2%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 2% 0 0 0;
     padding: 0;
 }
 
@@ -28,7 +25,7 @@ ul.navUL{
     
         ul li a.navButtons:hover, ul li a.navButtons:visited, ul li a.navButtons:link, ul li a.navButtons:active{
             text-decoration: none;
-            margin-left: 50px;
+            margin-left: 30px;
             padding-top: 6px;
             padding-left: 10px;
             padding-right: 10px;
@@ -38,25 +35,27 @@ ul.navUL{
         }
 
 #navigation{
-    padding-top: 20px;
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin: 1% 0 0 16%;
     font-size: 16px;
 }
 
-#myName{
-    float: left;
-    margin-top: 0;
-    font-size: 36px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
+hr{
+    border: 0;
+    height: 1px;
+    width: 60%;
+    margin: 40px auto 0 auto;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
 #myNameLink, #myNameLink:visited, #myNameLink:hover, #myNameLink:active{
     text-decoration: none;
     color: #000000;
+    font-size: 36px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
 }
 
 .navButtons:hover{

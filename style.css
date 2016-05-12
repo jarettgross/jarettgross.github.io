@@ -114,7 +114,7 @@ hr#projectBreak{
     text-align: center;
 }
 
-#rowOne, #rowTwo{
+#rowOne, #rowTwo, #rowThree{
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -137,6 +137,11 @@ hr#projectBreak{
 }
 
 #project3{
+    margin-left: 15px;
+    display: inline-block;
+}
+
+#project4{
     margin-left: 15px;
     display: inline-block;
 }
@@ -164,6 +169,10 @@ hr#projectBreak{
     overflow: hidden;
     font-weight: 600;
     opacity: 0.6;
+}
+
+#project4 .imageText{
+    margin-top: -60px;
 }
 
 .imageText:hover{

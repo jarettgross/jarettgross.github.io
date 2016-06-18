@@ -105,10 +105,12 @@ a > svg {
 }
 
 #nav-controller:hover, #nav-top:hover {
+	-webkit-tap-highlight-color: rgba(201, 224, 253, 0.8);
 	background-color: #D6CED0;
 }
 
 .nav-button > svg:hover, .nav-wrapper > .nav-button:hover {
+	-webkit-tap-highlight-color: rgba(201, 224, 253, 0.8);
 	background-color: #D6CED0;
 }
 
@@ -214,27 +216,18 @@ a > svg {
 }
 
 .column {
-	-webkit-columns: 3 auto;
-	-moz-columns: 3 auto;
-	columns: 3 auto;
-	-webkit-column-gap: 50px;
-	-moz-column-gap: 50px;
-	column-gap: 50px;
-	margin: 0 2vw;
+	-webkit-columns: 2 auto;
+	-moz-columns: 2 auto;
+	columns: 2 auto;
+	-webkit-column-gap: 100px;
+	-moz-column-gap: 100px;
+	column-gap: 100px;
+	margin: 0 5vw;
 	align-items: center;
 	justify-content: center;
 }
 
-/** COLUMN 1 -- MY EMAIL **/
-.column-one {
-	text-align: center;
-}
-
-#my-email {
-	font-size: 1.5em;
-}
-
-/** COLUMN 2 -- EMAIL FORM **/
+/** COLUMN 1 -- EMAIL FORM **/
 
 textarea {
 	padding: 5px 0 0 5px;
@@ -258,12 +251,14 @@ textarea:focus {
 	-webkit-flex-direction: column;
 	-ms-flex-direction: column;
 	flex-direction: column;
+	padding-bottom: 3px;
 }
 
 #email-message {
 	resize: vertical;
 	border-bottom-width: 0px;
 	min-width: 240.5px; /**FIXME**/
+	min-height: 100px;
 }
 
 #email-from {
@@ -298,22 +293,28 @@ textarea:focus {
 	display: flex;
 }
 
-/** COLUMN 3 -- CONTACT INFORMATION **/
+/** COLUMN 2 -- CONTACT INFORMATION **/
 
 .contact-sites {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
+	padding-bottom: 3px;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .contact-info {
-	margin: 1px auto;
+	margin: 5px 0;
+	width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+	.contact-info {
+		margin: 5px 0;
+		width: 50%;
+	}
 }
 
 .contact-info:hover .grayscale {
@@ -325,7 +326,7 @@ textarea:focus {
 	filter: none;
 }
 
-.contact-info:hover .github {
+.contact-info:hover .github, .contact-info:hover .email {
 	background-color: #000000;
 }
 
@@ -357,7 +358,6 @@ textarea:focus {
 	border-top-right-radius: 4px;
 	border-bottom-right-radius: 4px;
 	cursor: pointer;
-	margin-left: -4px;
 }
 
 /** PROJECTS **/

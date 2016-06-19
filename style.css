@@ -40,6 +40,7 @@ svg {
 	background-color: white;
 	right: 0;
 	background-position: right;
+	z-index: 50;
 }
 
 .nav-svg {
@@ -205,6 +206,8 @@ a > svg {
 }
 
 #resume-pdf:hover {
+	-webkit-box-shadow: 0 0 10px #383C3D;
+	-moz-box-shadow: 0 0 10px #383C3D;
 	box-shadow: 0 0 10px #383C3D;
 }
 
@@ -216,9 +219,9 @@ a > svg {
 }
 
 .column {
-	-webkit-columns: 2 auto;
-	-moz-columns: 2 auto;
-	columns: 2 auto;
+	-webkit-columns: 1 auto;
+	-moz-columns: 1 auto;
+	columns: 1 auto;
 	-webkit-column-gap: 100px;
 	-moz-column-gap: 100px;
 	column-gap: 100px;
@@ -238,6 +241,8 @@ textarea {
 }
 
 textarea:focus {
+	-webkit-box-shadow: 0 0 5px #383C3D;
+	-moz-box-shadow: 0 0 5px #383C3D;
 	box-shadow: 0 0 5px #383C3D;
 }
 
@@ -282,7 +287,9 @@ textarea:focus {
 	cursor: pointer;
 }
 
-#send-email:hover {
+#send-email:not(.no-hover):hover {
+	-webkit-box-shadow: 0 0 5px #383C3D;
+	-moz-box-shadow: 0 0 5px #383C3D;
 	box-shadow: 0 0 5px #383C3D;
 }
 
@@ -306,14 +313,13 @@ textarea:focus {
 }
 
 .contact-info {
-	margin: 5px 0;
-	width: 100%;
+	margin: 5px auto;
 }
 
-@media only screen and (min-width: 768px) {
-	.contact-info {
-		margin: 5px 0;
-		width: 50%;
+@media only screen and (max-width: 768px) {
+	.contact-info:nth-child(1n) {
+		page-break-after: always;
+		break-after: always;
 	}
 }
 
@@ -324,6 +330,20 @@ textarea:focus {
 	-o-filter: grayscale(0%);
 	filter: grayscale(0%);
 	filter: none;
+}
+
+/** FOR DESKTOP **/
+@media only screen and (min-width: 768px) {
+	.column {
+		-webkit-columns: 2 auto;
+		-moz-columns: 2 auto;
+		columns: 2 auto;
+	}
+	
+	.contact-info:nth-child(2n) {
+		page-break-after: always;
+		break-after: always;
+	}
 }
 
 .contact-info:hover .github, .contact-info:hover .email {

@@ -1,7 +1,17 @@
 var isRightArrow = true;
 var isNavReset = true;
 
+var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+if (isSafari) {
+	$("svg").removeClass("grayscale");
+}
+
+var isShowOpen = false;
+var prevShow = "";
+
 $(document).ready(function() {
+	$(".header").height($(window).height());
+	
 	var myIcons = new SVGMorpheus("#svg-controller");
 	
 	//Control navbar on arrow click
@@ -29,12 +39,12 @@ $(document).ready(function() {
 	
 	//Control navbar on scroll
 	$(document).scroll(function() {
-		if (document.documentElement.scrollTop != 0 && isRightArrow && isNavReset) {
+		if ($(document).scrollTop() != 0 && isRightArrow && isNavReset) {
 			var arrowWidth = 2 + (2380 / document.documentElement.clientWidth) + "vw";
 			myIcons.to("right-arrow", {duration: 1000, easing: "linear", rotation: "none"});	
 			$(".nav").animate({ width: arrowWidth }, 1000, "swing", function() {
 				$(".nav-wrapper").css("transform", "translateX(0%)");
-				if (document.documentElement.scrollTop == 0) {
+				if ($(document).scrollTop() == 0) {
 					$(".nav-wrapper").css("transform", "translateX(-50%)");
 					$(".nav-wrapper").css("-webkit-transform", "translateX(-50%)");
 					$(".nav-wrapper").css("-moz-transform", "translateX(-50%)");
@@ -42,13 +52,13 @@ $(document).ready(function() {
 				}
 			});
 			isRightArrow = !isRightArrow;
-		} else if (document.documentElement.scrollTop == 0 && !isRightArrow) {
+		} else if ($(document).scrollTop() == 0 && !isRightArrow) {
 			myIcons.to("left-arrow", {duration: 1000, easing: "linear", rotation: "none"});
 			$(".nav").animate({ width: "100%" }, 1000, "swing");
 			$(".nav-wrapper").css("transform", "translateX(-50%)");
 			isRightArrow = !isRightArrow;
 		}
-		if (document.documentElement.scrollTop == 0) {
+		if ($(document).scrollTop() == 0) {
 			isNavReset = true;
 		}
 	});
@@ -127,9 +137,129 @@ $(document).ready(function() {
 					$("#send-email").css("background-color", "#33CC40");
 					$("#send-email").css("cursor", "initial");
 					$("#send-email").css("pointer-events", "none");
-					$("#send-email").html("Sent!");
+					$("#send-email").html("SENT!");
 				}
 			});
 		}
 	});
+	
+	
+	//PROJECT DISPLAYS
+	$(".display").click(function() {
+		if (isShowOpen) {
+			if (prevShow == $(this).attr("id")) {
+				$(".open").animate({ height: "0" }, 500, "swing", function() {
+					$(".open").css("display", "none");
+					$(".open").removeClass("open");
+				});
+			} else {
+				$(".open").animate({ height: "0" }, 500, "swing", 
+					(function(id) {
+						return function() {
+							$(".open").css("display", "none");
+							$(".open").removeClass("open");
+							prepareShow(id);
+						}
+				})($(this).attr("id")));
+			}
+			isShowOpen = false;
+		} else {
+			prevShow = "";
+			prepareShow($(this).attr("id"));
+		}
+	});
+
+    $(".control-prev").click(function () {
+        $(".open .slides ul li:last-child").prependTo(".open .slides ul");
+    });
+
+    $(".control-next").click(function () {
+        $(".open .slides ul li:first-child").appendTo(".open .slides ul");
+    });
+	
+	
+	//PROC GEN
+	document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
+	document.getElementById("squareSizeVar").innerHTML = SQUARE_SIZE;
+	draw();
+	document.getElementById("createDungeonButton").addEventListener("click", function() { clearCanvas(); draw(); }, false);
+	
+	document.getElementById("roomTriesSlider").addEventListener("input",
+		function() {
+			ROOM_TRIES = document.getElementById("roomTriesSlider").value;
+			if (ROOM_TRIES < 10) {
+				document.getElementById("roomTriesVar").innerHTML = "0" + ROOM_TRIES;
+			} else {
+				document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
+			}
+		}
+	, false);
+
+	document.getElementById("squareSizeSlider").addEventListener("input",
+		function() {
+			SQUARE_SIZE = parseInt(document.getElementById("squareSizeSlider").value);
+			MIN_ROOM_SIZE = 4 * SQUARE_SIZE;
+			MAX_ROOM_ADDITION = 4 * SQUARE_SIZE;
+			HEIGHT_WIDTH_DIFFERENCE = 2 * SQUARE_SIZE;
+			if (SQUARE_SIZE < 10) {
+				document.getElementById("squareSizeVar").innerHTML = "0" + SQUARE_SIZE;
+			} else {
+				document.getElementById("squareSizeVar").innerHTML = SQUARE_SIZE;
+			}
+		}
+	, false);
 });
+
+
+function prepareShow(id) {
+	var screenWidthLevel;
+	if (document.documentElement.clientWidth >= 1200) {
+		screenWidthLevel = 2;
+	} else if (document.documentElement.clientWidth >= 768) {
+		screenWidthLevel = 1;
+	} else {
+		screenWidthLevel = 0;
+	}
+	
+	var show = "";
+	if (id == "summate") {
+		show = ("#summate-show");
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap"); }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");  }
+		else {							  $(show).insertAfter("#summate-wrap"); }
+		
+	} else if (id == "tunnel") {
+		show = ("#tunnel-show");
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap"); }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");  }
+		else {							  $(show).insertAfter("#tunnel-wrap");  }
+		
+	} else if (id == "procGen") {
+		show = ("#procGen-show");
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap");    }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
+		else {							  $(show).insertAfter("#procGen-wrap");    }
+		
+	} else if (id == "algorithms") {
+		show = ("#algorithms-show");
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap");   }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
+		else {							  $(show).insertAfter("#algorithms-wrap"); }
+		
+	} else if (id == "calendar") { 
+		show = ("#calendar-show");
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap"); }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#calendar-wrap"); }
+		else {							  $(show).insertAfter("#calendar-wrap"); }
+	}
+
+	isShowOpen = true;
+	prevShow = id;
+	$(show).addClass("open");
+	$(show).animate({ height: "500px" }, 500, "swing");
+	$(show).css("display", "inline");
+	
+	$('html, body').animate({
+		scrollTop: $("#" + id).offset().top + $("#" + id).height()
+	}, 1000);
+}

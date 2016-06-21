@@ -1,4 +1,7 @@
-CANVAS_WIDTH = 750; //canvas width
+ROOM_TRIES = 50;
+SQUARE_SIZE = 15;
+
+CANVAS_WIDTH = 500; //canvas width
 CANVAS_HEIGHT = 500; //canvas height
 NUM_COLORS = 256; //color range for rooms
 

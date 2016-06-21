@@ -1,18 +1,12 @@
-.projectInformation{
-    max-width: 950px;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 30px;
-    font-family: 'Merriweather', serif;
-    font-size: 14px;
-}
-
 canvas {
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    display: block;
+}
+
+.singleDisplay {
+	display: inline-block;
 }
 
 #varSliders {
@@ -23,52 +17,22 @@ canvas {
     margin-top: 5px;
 }
 
-.shortUL{
-    list-style-type: circle;
-    margin-left: 0;
-    margin-top: 0;
-}
-
-.implementedHead, .descriptionHead, #canvasKey{
-    list-style-type: none;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.shortDescription{
-    float: left;
-    font-size: 13px;
-}
-
-.fullDescription{
-    float: right;
-    font-size: 13px;
-    max-width: 450px;
-    margin-bottom: 60px;
-}
-
-.singleHeader{
-    font-weight: 600;
-    text-align: center;
-}
-
 #createDungeonButton {
     margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 15px;
     display: block;
-    background-color: #FFFFFF;
-    border-style: solid;
-    border-color: #000000;
-    border-width: 1px;
-    border-radius: 5px;
+    padding: 5px 10px;
+	color: #FFFFFF;
+	background-color: #383C3D;
     cursor: pointer;
+	font-size: 1em;
 }
 
 #createDungeonButton:hover {
-    color: #FFFFFF;
-    background-color: #000000;
+    -webkit-box-shadow: 0 0 10px #383C3D;
+	-moz-box-shadow: 0 0 10px #383C3D;
+	box-shadow: 0 0 10px #383C3D;
 }
 
 input[type=range] {
@@ -166,8 +130,4 @@ input[type=range]:focus::-ms-fill-lower {
 
 input[type=range]:focus::-ms-fill-upper {
 	background: #FFFFFF;
-}
-
-#canvasList {
-	margin-top: 40px;
 }

@@ -203,7 +203,6 @@ a > svg {
 
 #resume-pdf {
 	padding: 5px 10px;
-	font-weight: 700;
 	color: #FFFFFF;
 	background-color: #383C3D;
 }
@@ -263,6 +262,7 @@ textarea:focus {
 	-ms-flex-direction: column;
 	flex-direction: column;
 	padding-bottom: 3px;
+	max-width: 100%;
 }
 
 #email-message {
@@ -346,6 +346,10 @@ textarea:focus {
 	
 	.contact-info {
 		width: 50%;
+	}
+	
+	.email-form {
+		max-width: none;
 	}
 }
 
@@ -571,12 +575,6 @@ textarea:focus {
 	margin-left: 30px;
 	position: static;
 	display: inline-block;
-}
-
-@media only screen and (min-width: 768px) {
-	.description {
-		position: absolute;
-	}
 }
 
 .project-title {

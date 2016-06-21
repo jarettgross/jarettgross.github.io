@@ -10,8 +10,6 @@ var isShowOpen = false;
 var prevShow = "";
 
 $(document).ready(function() {
-	$(".header").height($(window).height());
-	
 	var myIcons = new SVGMorpheus("#svg-controller");
 	
 	//Control navbar on arrow click
@@ -256,7 +254,11 @@ function prepareShow(id) {
 	isShowOpen = true;
 	prevShow = id;
 	$(show).addClass("open");
-	$(show).animate({ height: "500px" }, 500, "swing");
+	if (id == "procGen") {
+		$(show).animate({ height: "600px" }, 500, "swing");
+	} else {
+		$(show).animate({ height: "500px" }, 500, "swing");
+	}
 	$(show).css("display", "inline");
 	
 	$('html, body').animate({

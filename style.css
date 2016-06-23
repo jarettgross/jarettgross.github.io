@@ -664,7 +664,7 @@ textarea:focus {
 
 .control-prev, .control-next {
 	position: absolute;
-	top: 50%;
+	top: 45%;
 	z-index: 999;
 	display: block;
 	padding: 10px 5px;

@@ -65,6 +65,8 @@ $(document).ready(function() {
 		}
 		
 		if (document.documentElement.clientWidth >= 768) {
+			$(".slides div ul li").css("height", "500px");
+			$(".show-wrapper").css("height", "500px");
 			$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
 			if (prevShow == "procGen") {
 				$("#" + prevShow + "-show").animate({ height: "600px" }, 500, "swing");
@@ -240,6 +242,7 @@ function prepareShow(id) {
 	if (id == "summate") {
 		show = ("#summate-show");
 		imageWidth = "250";
+		imageHeight = "500";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap"); }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");  }
 		else {							  $(show).insertAfter("#summate-wrap"); }
@@ -247,6 +250,7 @@ function prepareShow(id) {
 	} else if (id == "tunnel") {
 		show = ("#tunnel-show");
 		imageWidth = "500";
+		imageHeight = "300";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap"); }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");  }
 		else {							  $(show).insertAfter("#tunnel-wrap");  }
@@ -254,6 +258,7 @@ function prepareShow(id) {
 	} else if (id == "procGen") {
 		show = ("#procGen-show");
 		imageWidth = "500";
+		imageHeight = "300";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap");    }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
 		else {							  $(show).insertAfter("#procGen-wrap");    }
@@ -261,6 +266,7 @@ function prepareShow(id) {
 	} else if (id == "algorithms") {
 		show = ("#algorithms-show");
 		imageWidth = "500";
+		imageHeight = "300";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap");   }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
 		else {							  $(show).insertAfter("#algorithms-wrap"); }
@@ -268,6 +274,7 @@ function prepareShow(id) {
 	} else if (id == "calendar") { 
 		show = ("#calendar-show");
 		imageWidth = "500";
+		imageHeight = "300";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap"); }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#calendar-wrap"); }
 		else {							  $(show).insertAfter("#calendar-wrap"); }
@@ -281,6 +288,8 @@ function prepareShow(id) {
 	
 	$(show).addClass("open");
 	if (document.documentElement.clientWidth >= 768) {
+		$(".slides div ul li").css("height", "500px");
+		$(".show-wrapper").css("height", "500px");
 		$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
 		if (id == "procGen") {
 			$(show).animate({ height: "600px" }, 500, "swing");
@@ -288,6 +297,8 @@ function prepareShow(id) {
 			$(show).animate({ height: "500px" }, 500, "swing");
 		}
 	} else {
+		$(".slides div ul li").css("height", imageHeight + "px");
+		$(".show-wrapper").css("height", imageHeight + "px");
 		if (id != "summate") {
 			var newMargin = 0.9 * $(".horizontal").width();
 		} else {

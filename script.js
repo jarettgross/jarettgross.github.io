@@ -5,6 +5,11 @@ var isShowOpen = false;
 var prevShow = "";
 
 $(document).ready(function() {
+	$(".header").css("height", $(window).height());
+	$(".full-content").css("min-height", $(window).height());
+	$(".half-content").css("min-height", 0.5 * $(window).height());
+	$("#scroll-down-button").css("margin-top", "calc(50vh - 100px)");
+	
 	var myIcons = new SVGMorpheus("#svg-controller");
 	
 	//Control navbar on arrow click

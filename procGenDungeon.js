@@ -1,19 +1,19 @@
-ROOM_TRIES = 50;
-SQUARE_SIZE = 15;
+var ROOM_TRIES = 50;
+var SQUARE_SIZE = 15;
 
-CANVAS_WIDTH = 500; //canvas width
-CANVAS_HEIGHT = 500; //canvas height
-NUM_COLORS = 256; //color range for rooms
+var CANVAS_WIDTH = 500; //canvas width
+var CANVAS_HEIGHT = 500; //canvas height
+var NUM_COLORS = 256; //color range for rooms
 
-CORRIDOR_WALL_THRESHOLD = 0.333; //threshold for which side of a room the end corridor is
+var CORRIDOR_WALL_THRESHOLD = 0.333; //threshold for which side of a room the end corridor is
 
-MAX_CONNECTIONS = 1 + Math.floor(Math.random() * 8); //maximum number of connections a room can have
+var MAX_CONNECTIONS = 1 + Math.floor(Math.random() * 8); //maximum number of connections a room can have
 
-MIN_ROOM_SIZE = 4 * SQUARE_SIZE; //minimum size a room can be
-MAX_ROOM_ADDITION = 3 * SQUARE_SIZE; //maximum addition to min_room_width, resulting in final room size
-HEIGHT_WIDTH_DIFFERENCE = 3 * SQUARE_SIZE; //largest possible difference between height and width of rooms
+var MIN_ROOM_SIZE = 4 * SQUARE_SIZE; //minimum size a room can be
+var MAX_ROOM_ADDITION = 3 * SQUARE_SIZE; //maximum addition to min_room_width, resulting in final room size
+var HEIGHT_WIDTH_DIFFERENCE = 3 * SQUARE_SIZE; //largest possible difference between height and width of rooms
 
-compEnum = { //enum for components of dungeon
+var compEnum = { //enum for components of dungeon
     EMPTY: 0,
     ROOM: 1,
     CORRIDOR: 2,
@@ -22,11 +22,11 @@ compEnum = { //enum for components of dungeon
     ENTRY: 5
 };
 
-connect = new Map(); //map of connections for rooms
-minTreeMap = new Map(); //map for minimum spanning tree of rooms
-allRooms = []; //array of all rooms
+var connect = new Map(); //map of connections for rooms
+var minTreeMap = new Map(); //map for minimum spanning tree of rooms
+var allRooms = []; //array of all rooms
 
-mapSquares = new Array(Math.round((CANVAS_WIDTH/SQUARE_SIZE)*(CANVAS_HEIGHT/SQUARE_SIZE)));
+var mapSquares = new Array(Math.round((CANVAS_WIDTH/SQUARE_SIZE)*(CANVAS_HEIGHT/SQUARE_SIZE)));
 for (var i = 0; i < mapSquares.length; i++) {
     mapSquares[i] = compEnum.EMPTY;
 }

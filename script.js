@@ -1,11 +1,6 @@
 var isRightArrow = true;
 var isNavReset = true;
 
-var isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
-if (isSafari) {
-	$("svg").removeClass("grayscale");
-}
-
 var isShowOpen = false;
 var prevShow = "";
 
@@ -62,11 +57,32 @@ $(document).ready(function() {
 	});
 	
 	
-	//Change navbar width on window resize
+	//Change project height, navbar width on window resize
 	$(window).resize(function(){
 		if (!isRightArrow) {
 			var arrowWidth = 2 + (2380 / document.documentElement.clientWidth) + "vw";
 			$(".nav").css("width", arrowWidth);
+		}
+		
+		if (document.documentElement.clientWidth >= 768) {
+			$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
+			if (prevShow == "procGen") {
+				$("#" + prevShow + "-show").animate({ height: "600px" }, 500, "swing");
+			} else {
+				$("#" + prevShow + "-show").animate({ height: "500px" }, 500, "swing");
+			}
+		} else {
+			if (prevShow != "summate") {
+				var newMargin = 0.9 * $(".horizontal").width();
+			} else {
+				var newMargin = 0.9 * 250;
+			}
+			$(".control-next").css("margin-left", newMargin - 28.2667 + "px");
+			if (prevShow == "procGen") {
+				$("#" + prevShow + "-show").animate({ height: "1000px" }, 500, "swing");
+			} else {
+				$("#" + prevShow + "-show").animate({ height: "900px" }, 500, "swing");
+			}
 		}
 	});
 	
@@ -219,33 +235,39 @@ function prepareShow(id) {
 		screenWidthLevel = 0;
 	}
 	
+	var imageWidth;
 	var show = "";
 	if (id == "summate") {
 		show = ("#summate-show");
+		imageWidth = "250";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap"); }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");  }
 		else {							  $(show).insertAfter("#summate-wrap"); }
 		
 	} else if (id == "tunnel") {
 		show = ("#tunnel-show");
+		imageWidth = "500";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap"); }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");  }
 		else {							  $(show).insertAfter("#tunnel-wrap");  }
 		
 	} else if (id == "procGen") {
 		show = ("#procGen-show");
+		imageWidth = "500";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#procGen-wrap");    }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
 		else {							  $(show).insertAfter("#procGen-wrap");    }
 		
 	} else if (id == "algorithms") {
 		show = ("#algorithms-show");
+		imageWidth = "500";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap");   }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
 		else {							  $(show).insertAfter("#algorithms-wrap"); }
 		
 	} else if (id == "calendar") { 
 		show = ("#calendar-show");
+		imageWidth = "500";
 		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap"); }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#calendar-wrap"); }
 		else {							  $(show).insertAfter("#calendar-wrap"); }
@@ -253,11 +275,30 @@ function prepareShow(id) {
 
 	isShowOpen = true;
 	prevShow = id;
+	
+	$(".slides").css("width", imageWidth + "px");
+	$(".slides div ul li").css("width", imageWidth + "px");
+	
 	$(show).addClass("open");
-	if (id == "procGen") {
-		$(show).animate({ height: "600px" }, 500, "swing");
+	if (document.documentElement.clientWidth >= 768) {
+		$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
+		if (id == "procGen") {
+			$(show).animate({ height: "600px" }, 500, "swing");
+		} else {
+			$(show).animate({ height: "500px" }, 500, "swing");
+		}
 	} else {
-		$(show).animate({ height: "500px" }, 500, "swing");
+		if (id != "summate") {
+			var newMargin = 0.9 * $(".horizontal").width();
+		} else {
+			var newMargin = 0.9 * 250;
+		}
+		$(".control-next").css("margin-left", newMargin - 28.2667 + "px");
+		if (id == "procGen") {
+			$(show).animate({ height: "900px" }, 500, "swing");
+		} else {
+			$(show).animate({ height: "800px" }, 500, "swing");
+		}
 	}
 	$(show).css("display", "inline");
 	

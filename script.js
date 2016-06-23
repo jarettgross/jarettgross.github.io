@@ -37,12 +37,12 @@ $(document).ready(function() {
 	
 	//Control navbar on scroll
 	$(document).scroll(function() {
-		if ($(document).scrollTop() != 0 && isRightArrow && isNavReset) {
+		if ($(document).scrollTop() > 0 && isRightArrow && isNavReset) {
 			var arrowWidth = 2 + (2380 / document.documentElement.clientWidth) + "vw";
 			myIcons.to("right-arrow", {duration: 1000, easing: "linear", rotation: "none"});	
 			$(".nav").animate({ width: arrowWidth }, 1000, "swing", function() {
 				$(".nav-wrapper").css("transform", "translateX(0%)");
-				if ($(document).scrollTop() == 0) {
+				if ($(document).scrollTop() <= 0) {
 					$(".nav-wrapper").css("transform", "translateX(-50%)");
 					$(".nav-wrapper").css("-webkit-transform", "translateX(-50%)");
 					$(".nav-wrapper").css("-moz-transform", "translateX(-50%)");
@@ -50,13 +50,13 @@ $(document).ready(function() {
 				}
 			});
 			isRightArrow = !isRightArrow;
-		} else if ($(document).scrollTop() == 0 && !isRightArrow) {
+		} else if ($(document).scrollTop() <= 0 && !isRightArrow) {
 			myIcons.to("left-arrow", {duration: 1000, easing: "linear", rotation: "none"});
 			$(".nav").animate({ width: "100%" }, 1000, "swing");
 			$(".nav-wrapper").css("transform", "translateX(-50%)");
 			isRightArrow = !isRightArrow;
 		}
-		if ($(document).scrollTop() == 0) {
+		if ($(document).scrollTop() <= 0) {
 			isNavReset = true;
 		}
 	});

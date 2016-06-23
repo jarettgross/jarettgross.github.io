@@ -621,7 +621,7 @@ textarea:focus {
 	background-color: rgba(255, 255, 255, 0.3);
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
 	.horizontal {
 		-webkit-box-orient: horizontal;
 		-webkit-flex-direction: row;
@@ -708,7 +708,7 @@ textarea:focus {
 	width: 300px;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
 	#dungeon {
 		width: 500px;
 	}

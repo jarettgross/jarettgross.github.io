@@ -69,7 +69,7 @@ $(document).ready(function() {
 			$(".nav").css("width", arrowWidth);
 		}
 		
-		if (document.documentElement.clientWidth >= 768) {
+		if (document.documentElement.clientWidth >= 1200) {
 			$(".slides div ul li").css("height", "500px");
 			$(".show-wrapper").css("height", "500px");
 			$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
@@ -292,7 +292,7 @@ function prepareShow(id) {
 	$(".slides div ul li").css("width", imageWidth + "px");
 	
 	$(show).addClass("open");
-	if (document.documentElement.clientWidth >= 768) {
+	if (document.documentElement.clientWidth >= 1200) {
 		$(".slides div ul li").css("height", "500px");
 		$(".show-wrapper").css("height", "500px");
 		$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");

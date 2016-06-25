@@ -46,7 +46,11 @@ svg {
 .nav-svg {
 	fill: #383C3D;
 	height: 100%;
+}
+
+#nav-top, #nav-controller {
 	padding: 0 1vw;
+	cursor: pointer;
 }
 
 a > svg {
@@ -54,8 +58,6 @@ a > svg {
 }
 
 #nav-top {
-	pointer-events: none;
-	cursor: default;
 	position: absolute;
 }
 

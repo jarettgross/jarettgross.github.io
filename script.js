@@ -4,16 +4,20 @@ var isNavReset = true;
 var isShowOpen = false;
 var prevShow = "";
 
-$(document).ready(function() {
+$(window).resize(function(){
 	$(".header").css("height", $(window).height());
 	$(".full-content").css("min-height", $(window).height());
 	$(".half-content").css("min-height", 0.5 * $(window).height());
 	$("#scroll-down-button").css("margin-top", "calc(50vh - 100px)");
+});
+
+$(document).ready(function() {
+	//Set properties in js so that mobile address bars don't change these properties
 	
 	var myIcons = new SVGMorpheus("#svg-controller");
 	
 	//Control navbar on arrow click
-	$("#svg-controller").click(function() {
+	$("#nav-controller").click(function() {
 		if (isRightArrow) { //close navbar
 			var arrowWidth = 2 + (2380 / document.documentElement.clientWidth) + "vw";
 			myIcons.to("right-arrow", {duration: 1000, easing: "linear", rotation: "none"});	
@@ -69,6 +73,7 @@ $(document).ready(function() {
 			$(".nav").css("width", arrowWidth);
 		}
 		
+		//project height, not on mobile
 		if (document.documentElement.clientWidth >= 1200) {
 			$(".slides div ul li").css("height", "500px");
 			$(".show-wrapper").css("height", "500px");
@@ -100,11 +105,13 @@ $(document).ready(function() {
 		}, 1000);
 	});
 	
+	//Send email on click, checking that form is properly filled in
 	$("#send-email").click(function() {
 		var canSend = true;
+		//shake message box if not filled in, else remove shadow
 		if ($("#email-message").val() == "") {
 			canSend = false;
-			var shakeValue = 4;  
+			var shakeValue = 4;
 			for( var i = 0; i < 6; i++ ) {
 				$("#email-message").animate( { 
 					"margin-left": "+=" + (shakeValue = -shakeValue) + "px",
@@ -120,6 +127,7 @@ $(document).ready(function() {
 			$("#email-message").css("-moz-box-shadow", "none");
 		}
 		
+		//check for an email and that it's properly formatted
 		var emailAddressFormat = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 		if ($("#email-from").val() == "" || !emailAddressFormat.test($("#email-from").val())) {
 			canSend = false;
@@ -139,6 +147,7 @@ $(document).ready(function() {
 			$("#email-from").css("-moz-box-shadow", "none");
 		}
 		
+		//send email if possible
 		if (canSend) {
 			$.ajax({
 				url: "https://formspree.io/jarett@wustl.edu",
@@ -167,13 +176,14 @@ $(document).ready(function() {
 	
 	//PROJECT DISPLAYS
 	$(".display").click(function() {
+		//animate opening of project
 		if (isShowOpen) {
 			if (prevShow == $(this).attr("id")) {
 				$(".open").animate({ height: "0" }, 500, "swing", function() {
 					$(".open").css("display", "none");
 					$(".open").removeClass("open");
 				});
-			} else {
+			} else { //close
 				$(".open").animate({ height: "0" }, 500, "swing", 
 					(function(id) {
 						return function() {
@@ -190,6 +200,7 @@ $(document).ready(function() {
 		}
 	});
 
+	//buttons for going through images of a project
     $(".control-prev").click(function () {
         $(".open .slides ul li:last-child").prependTo(".open .slides ul");
     });
@@ -244,6 +255,7 @@ function prepareShow(id) {
 	
 	var imageWidth;
 	var show = "";
+	//check which show is open, place show in place according to current screen width
 	if (id == "summate") {
 		show = ("#summate-show");
 		imageWidth = "250";
@@ -288,11 +300,12 @@ function prepareShow(id) {
 	isShowOpen = true;
 	prevShow = id;
 	
+	//set width based on show
 	$(".slides").css("width", imageWidth + "px");
 	$(".slides div ul li").css("width", imageWidth + "px");
 	
 	$(show).addClass("open");
-	if (document.documentElement.clientWidth >= 1200) {
+	if (document.documentElement.clientWidth >= 1200) { //side-by-side layout
 		$(".slides div ul li").css("height", "500px");
 		$(".show-wrapper").css("height", "500px");
 		$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
@@ -301,7 +314,7 @@ function prepareShow(id) {
 		} else {
 			$(show).animate({ height: "500px" }, 500, "swing");
 		}
-	} else {
+	} else { //vertical layout
 		$(".slides div ul li").css("height", imageHeight + "px");
 		$(".show-wrapper").css("height", imageHeight + "px");
 		if (id != "summate") {
@@ -318,6 +331,7 @@ function prepareShow(id) {
 	}
 	$(show).css("display", "inline");
 	
+	//scroll to the show
 	$('html, body').animate({
 		scrollTop: $("#" + id).offset().top + $("#" + id).height()
 	}, 1000);

@@ -467,15 +467,15 @@ function draw() { //draw the dungeon
         var correctTree = minTree(); //create minimum spanning tree
         while (!correctTree) {
             connect.clear(); 
-        minTreeMap.clear();
-        allRooms = [];
-        
-        MAX_CONNECTIONS = 1 + Math.floor(Math.random() * 8); //maximum number of connections a room can have
-        
-        mapSquares = new Array(Math.round((CANVAS_WIDTH/SQUARE_SIZE)*(CANVAS_HEIGHT/SQUARE_SIZE)));
-        for (var i = 0; i < mapSquares.length; i++) {
-            mapSquares[i] = compEnum.EMPTY;
-        }
+			minTreeMap.clear();
+			allRooms = [];
+			
+			MAX_CONNECTIONS = 1 + Math.floor(Math.random() * 8); //maximum number of connections a room can have
+			
+			mapSquares = new Array(Math.round((CANVAS_WIDTH/SQUARE_SIZE)*(CANVAS_HEIGHT/SQUARE_SIZE)));
+			for (var i = 0; i < mapSquares.length; i++) {
+				mapSquares[i] = compEnum.EMPTY;
+			}
             genViableRooms();
             correctTree = minTree();
         }

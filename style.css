@@ -418,6 +418,7 @@ textarea:focus {
 }
 
 .contact-svg {
+	margin: 0 7px;
 	display: inline-block;
 	vertical-align: middle;
 }

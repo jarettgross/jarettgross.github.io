@@ -37,14 +37,14 @@ svg {
 	justify-content: space-between;
 	height: 20px;
 	padding: 10px 0px;
-	background-color: white;
+	background-color: #586D75;
 	right: 0;
 	background-position: right;
 	z-index: 50;
 }
 
 .nav-svg {
-	fill: #383C3D;
+	fill: white;
 	height: 100%;
 }
 
@@ -75,11 +75,11 @@ a > svg {
 .nav-button {
 	top: 0;
 	bottom: 0;
-	border-color: #383C3D;
+	border-color: white;
 }
 
 .nav-wrapper > .nav-button {
-	color: #383C3D;
+	color: white;
 	margin: 5px 0;
 	padding: 4px 1vw;
 }
@@ -105,18 +105,14 @@ a > svg {
 	text-align: right;
 	position: absolute;
 	right: 0;
-	background-color: white;
+	z-index: 9999;
+	background-color: #586D75;
 }
 
 @media only screen and (min-width: 768px) {
-	#nav-controller:hover, #nav-top:hover {
-		-webkit-tap-highlight-color: rgba(201, 224, 253, 0.8);
-		background-color: #D6CED0;
-	}
 
-	.nav-button > svg:hover, .nav-wrapper > .nav-button:hover {
-		-webkit-tap-highlight-color: rgba(201, 224, 253, 0.8);
-		background-color: #D6CED0;
+	.nav-wrapper > .center-btn:hover {
+		background-color: rgba(20, 20, 20, 0.1);
 	}
 }
 
@@ -124,14 +120,14 @@ a > svg {
 
 .header {
 	height: 100vh;
-	background-image: url("images/background-bw.png");
+	background-image: url("images/header-bg.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 .top-wrapper {
-	background-color: rgba(255, 255, 255, 0.3);
+	background-color: rgba(84, 161, 190, 0.3);
 	height: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -180,10 +176,11 @@ a > svg {
 }
 
 #about {
+	border-style: solid hidden dashed hidden;
+	border-width: 1px;
+	border-color: #8FA7B0;
 	background-color: #FFFFFF;
 	color: #383C3D;
-	border-style: dashed;
-	border-bottom-width: 2px;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -201,7 +198,7 @@ a > svg {
 	padding: 40px 0 0 0;
 	margin: 0 0 20px 0;
 	font-size: 2em;
-	color: #383C3D;
+	color: #586D75;
 	flex: 0;
 }
 
@@ -236,7 +233,7 @@ a > svg {
 #resume-pdf {
 	padding: 5px 10px;
 	color: #FFFFFF;
-	background-color: #383C3D;
+	background-color: #586D75;
 }
 
 @media only screen and (min-width: 768px) {
@@ -263,6 +260,9 @@ a > svg {
 	-ms-flex-direction: column;
 	flex-direction: column;
 	justify-content: center;
+	border-style: hidden hidden solid hidden;
+	border-width: 1px;
+	border-color: rgba(88, 109, 117, 0.2);
 }
 
 .column-wrapper {
@@ -309,7 +309,7 @@ textarea {
 	font-family: 'Amiko', sans-serif;
 	border-style: solid;
 	border-width: 1px;
-	background-color: #F7F7F7;
+	background-color: rgba(245, 245, 245, 0.5);
 }
 
 textarea:focus {
@@ -323,7 +323,7 @@ textarea:focus {
 	display: -webkit-inline-flex;
 	display: -ms-inline-flexbox;
 	display: -moz-inline-box;
-	display: inline-flex;
+	display: flex;
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
@@ -356,7 +356,7 @@ textarea:focus {
 	text-align: center;
 	padding: 18.5px 0;
 	color: white;
-	background-color: #383C3D;
+	background-color: #586D75;
 	cursor: pointer;
 }
 
@@ -383,9 +383,10 @@ textarea:focus {
 	display: -ms-flexbox;
 	display: flex;
 	padding-bottom: 3px;
-	flex-wrap: wrap;
 	justify-content: center;
 	flex: 1;
+	width: 50%;
+	margin: 30px 0 50px 0;
 }
 
 .contact-info {
@@ -423,17 +424,6 @@ textarea:focus {
 
 /** FOR DESKTOP **/
 @media only screen and (min-width: 1200px) {
-	.column {
-		-webkit-box-orient: horizontal;
-		-webkit-box-direction: normal;
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;
-		flex-direction: row;
-	}
-	
-	.contact-info {
-		width: 50%;
-	}
 	
 	.email-form {
 		max-width: none;
@@ -483,7 +473,7 @@ textarea:focus {
 .full-content {
 	min-height: 100vh;
 	height: auto;
-	background-color: #E3E3E3;
+	background-color: rgba(88, 109, 117, 0.05);
 	background-position: center;
 	padding-bottom: 20px;
 	display: -webkit-box;
@@ -582,12 +572,20 @@ textarea:focus {
 	-o-transition: all 0.3s ease;
 }
 
+#playship {
+	background-image: url("images/playship_display.svg");
+}
+
 #summate {
 	background-image: url("images/summate_display.png");
 }
 
 #tunnel {
 	background-image: url("images/tunnel_display.png");
+}
+
+#boiler-escape {
+	background-image: url("images/boiler-escape_display.png");
 }
 
 #procGen {

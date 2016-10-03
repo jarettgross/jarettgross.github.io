@@ -176,7 +176,7 @@ a > svg {
 }
 
 #about {
-	border-style: solid hidden dashed hidden;
+	border-style: hidden;
 	border-width: 1px;
 	border-color: #8FA7B0;
 	background-color: #FFFFFF;

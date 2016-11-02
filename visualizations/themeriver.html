@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>ThemeRiver</title>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<style>
+
+		.axis path, .axis line {
+		    fill: none;
+		    stroke: #000000;
+		    shape-rendering: crispEdges;
+		}
+
+		.axis text {
+			font-size: 11px;
+		}
+
+		.stream-info {
+			z-index: 999;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="theme-river"></div>
+	<script type="text/javascript">
+
+		//CONSTANTS
+		var WIDTH = 1000;
+		var HEIGHT = 500;
+		var X_PADDING = 20;
+		var Y_PADDING = 20;
+
+		var riverSelect = null;
+
+    	d3.csv("test.csv", function(data) {
+    		//Parse data
+    		var dataKeys   = Object.keys(data[0]);
+    		var dataNames  = [];
+    		var dataTimes  = [];
+    		var dataValues = [];
+    		data.forEach(function(d) {
+    			dataNames.push(Object.values(d)[0]);
+    			dataTimes.push(Object.values(d)[1]);
+    			dataValues.push(Object.values(d)[2]);
+
+    			d[dataKeys[1]] = d[dataKeys[1]];
+    			d[dataKeys[2]] = +d[dataKeys[2]];
+    		});
+    		
+    		var nest = d3.nest()
+    			.key(function(d) { return d[dataKeys[0]] })
+    			.entries(data);
+
+			var timeSeries = d3.layout.stack()
+				.values(function(d) { return d.values })
+				.x(function(d) { return d[dataKeys[1]] })
+				.y(function(d) { return d[dataKeys[2]] })
+				.offset("silhouette")(nest);
+
+			var xScale = d3.scale.linear()
+				.domain([d3.min(dataTimes), d3.max(dataTimes)])
+				.range([X_PADDING, WIDTH - X_PADDING]);
+
+    		var yScale = d3.scale.linear()
+    			.domain([0, d3.max(data, function(d) { return d.y0 + d.y })])
+    			.range([0, HEIGHT - X_PADDING]);
+
+			var xAxis = d3.svg.axis()
+				.scale(xScale)
+				.orient("bottom")
+				.ticks(15)
+				.tickFormat(d3.format(".1f"));
+
+			var area = d3.svg.area()
+				.x(function(d) { return xScale(d[dataKeys[1]]) })
+				.y0(function(d) { return yScale(d.y0) })
+				.y1(function(d) { return yScale(d.y0 + d.y) })
+				.interpolate("basis");
+
+			var svg = d3.select("#theme-river")
+				.append("svg")
+    			.attr("width", WIDTH)
+    			.attr("height", HEIGHT);
+
+    		var streamInfo = svg.append("text")
+    			.attr("class", "stream-info")
+    			.attr("x", 15)
+				.attr("y", 15)
+				.attr("font-size", "12px")
+				.attr("fill", "#000000");
+
+			//Draw x-axis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(0," + (HEIGHT - Y_PADDING) + ")")
+				.call(xAxis);
+
+			//Draw streams and implement mouse hovering
+			svg.selectAll(".stream")
+				.data(timeSeries)
+				.enter()
+				.append("path")
+				.attr("class", "stream")
+				.attr("d", function(d) { return area(d.values) })
+				.style("fill", function() { 
+					return 'rgb(' + (Math.floor(56*Math.random()) + 200) + ',' + (Math.floor(56*Math.random()) + 200) + ',' + (Math.floor(56*Math.random()) + 200) + ')'})
+				.on("mouseover", function() { streamInfo.style("display", "block") })
+				.on("mouseout", function() { streamInfo.text("") })
+				.on("mousemove", function(d) {
+					var index = Math.round(xScale.invert(d3.mouse(this)[0])) - 1; //index stream's data row (name, time, value)
+					streamInfo.text("(" + d.key + ", " + d.values[index][dataKeys[1]] + ", " + d.values[index][dataKeys[2]] + ")");
+				});
+		});
+	</script>
+</body>

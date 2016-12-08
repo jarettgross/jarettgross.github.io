@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Super Smash Bros. Visualization</title>
+	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,400,700,700i,800" rel="stylesheet">
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<style>
+
+		body {
+			font-family: 'Libre Franklin', sans-serif;
+		}
+
+		.axis path, .axis line {
+		    fill: none;
+		    stroke: red;
+		    shape-rendering: crispEdges;
+		}
+
+		.axis text {
+			font-size: 9px;
+			fill: red;
+			stroke: none;
+		}
+
+		div.tooltip {	
+		    position: absolute;
+		    text-align: center;
+		    width: 40px;
+		    height: 14px;
+		    padding: 2px;
+		    font: 12px;
+		    background: #60CCC7;
+		    border-radius: 8px;
+		}
+
+		.vis-title {
+			margin: 0 auto;
+			width: 100%;
+			text-align: center;
+			font-size: 30px;
+			font-weight: 700;
+		}
+
+		.instructions {
+			margin: 0px auto 0px auto;
+			text-align: center;
+			font-size: 24px;
+			line-height: 1.5;
+		}
+
+		.important-word {
+			font-weight: 700;
+		}
+
+		.char-dead {
+			color: red;
+		}
+
+		.select-container {
+			margin: auto;
+			margin-top: 30px;
+		}
+
+		#smash-bros {
+			display: inline-block;
+			margin-top: 10px;
+			border-width: 1px;
+			border-style: solid dashed solid solid;
+		}
+
+		#bubble-chart-view {
+			margin-left: -10px;
+			display: inline-block;
+			border-width: 1px;
+			border-style: solid solid solid hidden;
+		}
+
+		.bubbles-percent {
+			position: absolute;
+			font-weight: 700;
+			font-size: 20px;
+		}
+
+		.bubbles-char {
+			position: absolute;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="vis-title">Super Smash Bros. for Wii U Knockback Visualization</div>
+	<div class="instructions">
+		Select an <span class="important-word">attacker</span> with a <span class="important-word">move</span> and <span class="important-word">target</span>
+		<br>
+		Click the left side of the visualization to see knockback
+		<br>
+		The right side shows knockback distance relative to the character on screen
+		<br>
+		If a target goes beyond the dotted box, the target is <span class="char-dead">dead</span>!
+	</div>
+
+	<div class="select-container">
+		<select class="select-menu" id="attacker-select"></select>
+		<select class="select-menu" id="move-select"></select>
+		<select class="select-menu" id="target-select"></select>
+	</div>
+
+	<div id="smash-bros"></div>
+	<span id="bubble-chart-view"></span>
+
+	<script type="text/javascript">
+
+		//================================
+		// VARIABLES
+		//================================
+
+		//DATA
+		var characterData;
+		var moveData;
+
+		//SELECT MENUS
+		var attackerSelect;
+		var targetSelect;
+		var moveSelect;
+		var currentAttacker;
+		var currentTarget;
+		var currentMove;
+
+		//SMASH-RELATED CONSTANTS
+		var minPercent = 0;
+		var maxPercent = 200;
+
+		//D3 VISUALIZATION CONSTANTS
+		var WIDTH = 1000;
+		var HEIGHT = 600;
+		var X_PADDING = 20;
+		var Y_PADDING = 20;
+
+		//Zoom feature variables
+		var mulitplier = 1;
+		var yMultiplier = 1;
+		var circleMult = 1;
+
+		//View Variables
+		var mainViewWidth = 0.6 * screen.width;
+		var mainViewHeight = 0.5 * screen.height;
+		var bubbleViewWidth = 0.3 * screen.width;
+		var bubbleViewHeight = 0.5 * screen.height;
+
+		var startPosX = mainViewWidth / 2;
+		var startPosY = 0.24 * screen.height;
+
+		//======================
+		//D3 Variables
+		//======================
+
+		//Main View for knockback
+		var svg = d3.select("#smash-bros")
+			.append("svg")
+			.attr("width", mainViewWidth)
+			.attr("height", mainViewHeight);
+
+		//Secondary view for bubble chart
+		var svg2 = d3.select("#bubble-chart-view")
+			.append("svg")
+			.attr("class", "bubble-chart")
+			.attr("width", bubbleViewWidth)
+			.attr("height", bubbleViewHeight);
+
+		var stage = d3.select("#smash-bros")
+			.select("svg")
+			.append("rect")
+			.attr("class", "stage-rect")
+			.attr("x", mainViewWidth / 4)
+			.attr("y", 250)
+			.attr("width", 400)
+			.attr("height", 20)
+			.attr("stroke", "black")
+			.attr("stroke-width", 0.5)
+			.attr("fill-opacity", "0");
+
+		var xScale = d3.scale.linear()
+			.domain([-100, 100])
+			.range([X_PADDING, mainViewWidth - X_PADDING]);
+
+		var xAxis = d3.svg.axis()
+			.scale(xScale)
+			.orient("bottom")
+			.ticks(5)
+			.tickFormat(d3.format(".1f"));
+
+		var yScale = d3.scale.linear()
+			.domain([40, -40])
+			.range([Y_PADDING, mainViewHeight - Y_PADDING]);
+
+		var yAxis = d3.svg.axis()
+			.scale(yScale)
+			.orient("right")
+			.ticks(5)
+			.tickFormat(d3.format(".1f"));
+
+		svg.append("g")
+			.attr("class", "axis")
+			.attr("transform", "translate(0," + (mainViewHeight - Y_PADDING) + ")")
+			.call(xAxis);
+
+		svg.append("g")
+			.attr("class", "axis")
+			.attr("transform", "translate(" + (Y_PADDING) + ", -5)")
+			.call(yAxis);
+
+		var tooltip = d3.select("body").append("div")	
+    		.attr("class", "tooltip")				
+    		.style("opacity", 0);
+
+    	var bubblesChar = d3.select("#bubble-chart-view").append("text")
+			.attr("class", "bubbles-char")
+			.style("margin-left", -1 * bubbleViewWidth / 2 - 30 + "px")
+			.style("margin-top", bubbleViewHeight - 20 + "px")
+			.text(function() {
+				return "";
+			});
+
+    	//================================
+		// DOM EVENT LISTENER
+		//================================
+
+		//Set select dropdowns on DOM load
+		document.addEventListener("DOMContentLoaded", function() {
+			attackerSelect = document.getElementById("attacker-select");
+			targetSelect   = document.getElementById("target-select");
+			moveSelect     = document.getElementById("move-select");
+		});
+
+		//================================
+		// PARSE DATA + CALL FUNCTIONS
+		//================================
+
+		//Parse all character data into array of objects
+		//Structure:
+		//*************************
+		//  Characters: {
+		//    Bayonetta: {
+		//      fallSpeed: 5,
+		//      gravity:   5,
+		//      weight:    5
+		//    },
+		//    Mario: { ... }
+		//  }
+		//**************************
+		var dataArray = [];
+		d3.csv("characters.csv", function(data) {
+			data.forEach(function(d) {
+				dataArray.push({
+	    			character: Object.values(d)[0],
+	    			fallSpeed: Object.values(d)[1],
+	    			gravity:   Object.values(d)[2],
+	    			weight:    Object.values(d)[3]
+	    		});
+    		});
+
+			var charactersJSON = {
+				Characters: {}
+			};
+			for (var i = 0; i < dataArray.length; i++) {
+				//Add values to the given character
+				charactersJSON.Characters[dataArray[i].character] = {
+					character: dataArray[i].character,
+					fallSpeed: dataArray[i].fallSpeed,
+					gravity:   dataArray[i].gravity,
+					weight:    dataArray[i].weight
+				};
+			}
+			characterData = charactersJSON;
+
+			//Parse all move data into array of objects
+			//Structure:
+			//*************************
+			//  Characters: {
+			//    Bayonetta: {
+			//      Moves: {
+			//		  Jab: {
+			//          baseDamage:  5,
+			//          angle:       5,
+			//          baseKB:      5,
+			//          kbGrowth:    5,
+			//          launchAngle: 5,
+			//          hitstun:     5
+			//        },
+			//        Throw: { ... }
+			//      }
+			//    },
+			//    Mario: { ... }
+			//  }
+			//**************************
+			var moveArray = [];
+			d3.csv("Sm4sh-Data-Final.csv", function(data) {
+				data.forEach(function(d) {
+					moveArray.push({
+		    			character:   Object.values(d)[0],
+						move:        Object.values(d)[1],
+						baseDamage:  Object.values(d)[2],
+						damage:      Object.values(d)[3],
+						angle:       Object.values(d)[4], //use launch angle
+						baseKB:      Object.values(d)[5],
+						kbGrowth:    Object.values(d)[6],
+						launchAngle: Object.values(d)[7], //use this
+						hitstun:     Object.values(d)[8]
+		    		});
+	    		});
+
+				var characterMovesJSON = {
+					Characters: {}
+				};
+
+				for (var j = 0; j < moveArray.length; j++) {
+					//If character not yet in array
+					if (!characterMovesJSON.Characters[moveArray[j].character])  {
+						//Add the "moves" key
+						characterMovesJSON.Characters[moveArray[j].character] = {
+							Moves: {}
+						};
+					}
+					characterMovesJSON.Characters[moveArray[j].character].Moves[moveArray[j].move] = new Object();
+					//Add values to the given move
+					characterMovesJSON.Characters[moveArray[j].character].Moves[moveArray[j].move] = {
+						baseDamage:  moveArray[j].baseDamage,
+						angle:       moveArray[j].angle,
+						baseKB:      moveArray[j].baseKB,
+						kbGrowth:    moveArray[j].kbGrowth,
+						launchAngle: moveArray[j].launchAngle,
+						hitstun:     moveArray[j].hitstun
+					};
+				}
+				moveData = characterMovesJSON;
+
+				//Create the select dropdowns
+				createSelects();
+
+				//Call createTrajectory method and whatever else you need inside the event listeners
+				svg.on("click", function(){
+					svg.selectAll("circle").remove();
+					var coords = d3.mouse(this);
+					startPosX = coords[0];
+					startPosY = coords[1];
+					var circle = svg.append("circle")
+					.attr("cx", startPosX)
+					.attr("cy", startPosY)
+					.attr("r", 10);
+					createTrajectory(currentAttacker, currentMove, currentTarget);
+					// .on("click", function() {
+					// 	createTrajectory(currentAttacker, currentMove, currentTarget)
+					// });
+				});
+				
+			});
+		});
+
+		//================================
+		// HELPER FUNCTIONS
+		//================================
+
+		//Create the select dropdowns
+		function createSelects() {
+			//Populate attacker, target select dropdowns
+			for (var character in characterData.Characters) {
+				var opt = document.createElement("option");
+				opt.value = character;
+				opt.innerHTML = character;
+				attackerSelect.appendChild(opt);
+			}
+
+			for (var character in characterData.Characters) {
+				var opt = document.createElement("option");
+				opt.value = character;
+				opt.innerHTML = character;
+				targetSelect.appendChild(opt);
+			}
+			attackerSelect.selectedIndex = 0;
+			targetSelect.selectedIndex = 0;
+
+			currentAttacker = attackerSelect.value;
+			currentTarget = targetSelect.value;
+
+			//Populate move select dropdown with default attacker
+			for (var move in moveData.Characters[currentAttacker].Moves) {
+				var opt = document.createElement("option");
+				opt.value = move;
+				opt.innerHTML = move;
+				moveSelect.appendChild(opt);
+			}
+			moveSelect.selectedIndex = 0;
+			currentMove = moveSelect.value;
+
+			//Change moves in select dropdown when new attacker selected
+			attackerSelect.addEventListener("change", function() {
+				//Update current attacker
+				currentAttacker = attackerSelect.value;
+
+				//Clear moves select dropdown
+				moveSelect.options.length = 0;
+
+				//Append new moves to select dropdown based on attacker
+				for (var move in moveData.Characters[currentAttacker].Moves) {
+					var opt = document.createElement("option");
+					opt.value = move;
+					opt.innerHTML = move;
+					moveSelect.appendChild(opt);
+				}
+				moveSelect.selectedIndex = 0;
+				currentMove = moveSelect.value;
+
+				bubbleChart(0);
+				createTrajectory(currentAttacker, currentMove, currentTarget);
+			});
+
+			moveSelect.addEventListener("change", function() {
+				//Update current move
+				currentMove = moveSelect.value;
+				bubbleChart(0);
+				createTrajectory(currentAttacker, currentMove, currentTarget);
+			});
+
+			targetSelect.addEventListener("change", function() {
+				//Update current target
+				currentTarget = targetSelect.value;
+				bubbleChart(0);
+				createTrajectory(currentAttacker, currentMove, currentTarget);
+			});
+		}
+
+		//Get x, y distances the target will get knocked back by move of attacker
+		//Return array of distances, where each entry is (x, y) based on percent
+		function knockbackDistances(attacker, move, target) {
+			var baseDamage   = moveData.Characters[attacker].Moves[move].baseDamage;
+			var kbg          = moveData.Characters[attacker].Moves[move].kbGrowth;
+			var angle        = moveData.Characters[attacker].Moves[move].launchAngle;
+			var targetWeight = characterData.Characters[target].weight;
+			var knockbacks = [];
+			for (var percent = minPercent; percent <= maxPercent; percent += 20) {
+				var knockback = ((((((percent+baseDamage)/10)+(((percent+baseDamage)*baseDamage)/20))*(200/(targetWeight+100))*1.4)+18)*(kbg/100));
+
+				knockbacks.push({
+					x: Math.abs(knockback * Math.cos(angle * Math.PI / 180)),
+					y: -1 * knockback * Math.sin(angle * Math.PI / 180)
+				});
+			}
+			return knockbacks;
+		}
+
+		//Get x, y velocities of knockback based on distance
+		function knockbackVelocities(knockbacks) {
+			//Clear current svgs
+			svg.selectAll(".stage-rect").remove();
+			svg.selectAll(".axis").remove();
+			svg.selectAll(".border").remove();
+			var velocities = [];
+
+			//Calculate velocities and zoom
+			for (var i = 0; i < knockbacks.length; i++) {
+				//Zoom for knockback circles
+				var stageMultiplier = 0.5;
+				if(knockbacks[5].x > 47 || Math.abs(knockbacks[5].y) > 40){
+					circleMult = 1;
+					stageMultiplier =.5;
+					multiplier = .06;
+					yMultiplier = .05;
+				} else if (knockbacks[knockbacks.length - 1].x > 47 || Math.abs(knockbacks[knockbacks.length - 1].y) > 40) {
+					circleMult = 1;
+					stageMultiplier =.5;
+					multiplier = .06;
+					yMultiplier = .05;
+				}else if(knockbacks[5].x > 12 || Math.abs(knockbacks[5].y) > 12){
+					circleMult = 1.2;
+					stageMultiplier = .84
+					multiplier = .10;
+					yMultiplier = .10;
+				} else {
+					circleMult = 1.5;
+					stageMultiplier = 3.6;
+					multiplier = .5;
+					yMultiplier = .50;
+				}
+				velocities.push({
+					x: knockbacks[i].x * multiplier,
+					y: knockbacks[i].y * yMultiplier
+				});
+
+				var stageX = (mainViewWidth - 400 * stageMultiplier)/2;
+
+				//Stage
+				d3.select("#smash-bros")
+					.select("svg")
+					.append("rect")
+						.attr("class", "stage-rect")
+						.attr("x", stageX)
+						.attr("y", 0.25 * screen.height)
+						.attr("width", 400 * stageMultiplier)
+						.attr("height", 20 * stageMultiplier)
+						.attr("stroke", "black")
+						.attr("stroke-width", 0.5)
+						.attr("fill-opacity", "0");
+
+				//Killbox
+				if (circleMult <= 1) {
+					d3.select("#smash-bros")
+						.select("svg")
+						.append("rect")
+							.attr("class", "border")
+							.attr("x", mainViewWidth - .475 * screen.width)
+							.attr("y", .07 * screen.height)
+							.attr("width", .355 * screen.width)
+							.attr("height", .235 * screen.height)
+							.attr("stroke", "black")
+							.attr("fill-opacity", "0")
+							.style("stroke-dasharray", ("10,3"))
+							.style("border-width", "1px");
+				}
+
+				var xScale = d3.scale.linear()
+					.domain([-100 * 1/stageMultiplier, 100 * 1/stageMultiplier])
+					.range([X_PADDING, mainViewWidth - X_PADDING]);
+
+				var xAxis = d3.svg.axis()
+					.scale(xScale)
+					.orient("bottom")
+					.ticks(5)
+					.tickFormat(d3.format(".1f"));
+
+				svg.append("g")
+					.attr("class", "axis")
+					.attr("transform", "translate(0," + (mainViewHeight - Y_PADDING) + ")")
+					.call(xAxis);
+
+				var yScale = d3.scale.linear()
+					.domain([-40 * 1/stageMultiplier, 40 * 1/stageMultiplier])
+					.range([Y_PADDING, mainViewHeight - Y_PADDING]);
+
+				var yAxis = d3.svg.axis()
+					.scale(yScale)
+					.orient("right")
+					.ticks(5)
+					.tickFormat(d3.format(".1f"));
+
+				svg.append("g")
+					.attr("class", "axis")
+					.attr("transform", "translate(" + (Y_PADDING) + ", -5)")
+					.call(yAxis);
+			}
+			return velocities;
+		}
+
+		//Get gravity of target
+		function getGravity(target) {
+			return characterData.Characters[target].gravity;
+		}
+
+		//Get max fall speed of target
+		function getFallSpeed(target) {
+			return characterData.Characters[target].fallSpeed;
+		}
+
+		//Return amount of x, y decay per frame given a move's angle
+		function getKBDecay(angle) {
+			return {
+				x: 0.051 * Math.cos(angle * Math.PI / 180), 
+				y: 0.051 * Math.sin(angle * Math.PI / 180)
+			};
+		}
+
+		//Display the trajectory of a target
+		function createTrajectory(attacker, move, target) {
+			svg.selectAll(".kb-circle").remove();
+			svg.selectAll(".line-path").remove();
+
+			var dist            = knockbackDistances(attacker, move, target);
+			var velos           = knockbackVelocities(dist); //each entry is for a percent
+			var langle          = parseFloat(moveData.Characters[attacker].Moves[move].launchAngle);
+			var targetGravity   = parseFloat(getGravity(target));
+			var targetFallSpeed = parseFloat(getFallSpeed(target));
+			var hitstun         = parseInt(moveData.Characters[attacker].Moves[move].hitstun);
+			
+			//Attacker circle
+			var aCircle = svg.append("circle")
+				.attr("cx", startPosX)
+				.attr("cy", startPosY)
+				.attr("r", 10)
+				.on("click", function() {
+					createTrajectory(currentAttacker, currentMove, currentTarget)
+				});
+
+			//For each velocity at x%
+			for (var i = 0; i < velos.length; i++) {
+				var charVelocity = 0;
+				var idx = 0;
+				var px = startPosX;
+				var py = startPosY;
+				var circleColor = 0;
+				var circlesDraw = true;
+
+				var points = [[px, py]];
+				var beforeHitstunPoints = [[px, py]];
+				var min1 = 9999;
+
+				//Calculate (x, y) points of each frame
+				while (velos[i].x > 0 && idx < 40 && py <= startPosY) {
+					//Calculate character velocity
+						if (charVelocity < targetFallSpeed) {
+							charVelocity += targetGravity;
+							charVelocity = Math.min(charVelocity, targetFallSpeed);
+						}
+
+						//Make kb decay opposite direction of velocity
+						var kbDecayX = getKBDecay(langle).x;
+						if ((velos[i].x < 0 && kbDecayX < 0) || (velos[i].x > 0 && kbDecayX > 0)) {
+							kbDecayX *= -1;
+						}
+
+						//Calculate velocities
+						velos[i].x = velos[i].x + kbDecayX;
+						velos[i].x = Math.max(velos[i].x, 0);
+						velos[i].y = velos[i].y + getKBDecay(langle).y + 0.1 * charVelocity;
+						px += velos[i].x * 7;
+						py += velos[i].y * 7;
+						min1 = Math.min(py, min1);
+
+						//Set small circle color based on if in hitstun
+						if (circleMult <= 1 && px >= (mainViewWidth - .475 * screen.width) + (.357 * screen.width)) {
+							circlesDraw = false;
+							circleColor = "red";
+						} else if (circleMult <= 1 && min1 <= .07 * screen.height) {
+							circlesDraw = false;
+							circleColor ="red";
+						} else {
+							circlesDraw = true;
+							if (idx < hitstun / 2) {
+								beforeHitstunPoints.push([px, py]);
+							}
+							points.push([px, py]);
+						}
+						
+						idx++;
+				}
+
+				//Create the line path
+				var path = svg.append("path")
+				    .data([points])
+				    .attr("fill", "none")
+				    .attr("stroke", function() {
+				    	var minChecker = 99999;
+				    	for(var j = 0; j < points.length; j++){
+							minChecker = Math.min(minChecker, points[j][1]);
+						}
+						if (!circlesDraw) {
+							return "red";
+						} else {
+				    		return "rgba(200, 200, 200, 100)";
+				    	}
+				    })
+				    .attr("stroke-width", 1)
+				    .attr("class", "line-path")
+				    .attr("d", d3.svg.line()
+				    	.interpolate("linear"));
+
+				var noHitstunPath = svg.append("path")
+				    .data([beforeHitstunPoints])
+				    .attr("fill", "none")
+
+				    //.attr("stroke", "black")
+				    .attr("stroke", function(d) { 
+				    	var minChecker = 9999;
+				    	for(var i = 0; i < points.length; i++){
+							minChecker = Math.min(minChecker, points[i][1]);
+						}
+
+				    	if (!circlesDraw) {
+				    		return "red";
+				    	} else{
+				    		return "black";
+				    	}
+				    })
+				    .attr("stroke-width", 1)
+				    .attr("class", "line-path")
+				    .attr("d", d3.svg.line()
+				    	.interpolate("linear"));
+
+				//Target circle
+				var tCircle = svg.append("circle")
+					.attr("class", "kb-circle")
+					.attr("cx", startPosX)
+					.attr("cy", startPosY)
+					.attr("r", 7 * circleMult)
+					.attr("i", i)
+					.style("fill", circleColor);
+
+				//Transition the target circle along trajectory path
+				tCircle.on("mouseover", function(d) {
+					bubbleChart(d3.select(this).attr("i") * 20);
+				}).transition()
+					.duration(4000)
+					.attrTween("transform", transition(path.node()));
+
+				function transition(path) {
+					var l = path.getTotalLength();
+					return function(d, i, a) {
+						return function(t) {
+							var p = path.getPointAtLength(t * l);
+							return "translate(" + (p.x - startPosX) + "," + (p.y - startPosY) + ")";
+						};
+					};
+				}
+			}
+
+			bubbleChart(0);
+		}
+
+		//================================
+		// BUBBLE CHART
+		//================================
+
+		var bubble = d3.layout.pack()
+			.size([bubbleViewWidth - 50, bubbleViewHeight - 50])
+			.padding(2);
+
+		function moveKBAllTargets(percent) {
+			var baseDamage   = moveData.Characters[currentAttacker].Moves[currentMove].baseDamage;
+			var kbg          = moveData.Characters[currentAttacker].Moves[currentMove].kbGrowth;
+			var angle        = moveData.Characters[currentAttacker].Moves[currentMove].launchAngle;
+
+			var knockbacks = [];
+			for (var i = 0; i < Object.keys(characterData.Characters).length; i++) {
+				var targetWeight = characterData.Characters[Object.keys(characterData.Characters)[i]].weight;
+				var knockback = ((((((percent+baseDamage)/10)+(((percent+baseDamage)*baseDamage)/20))*(200/(targetWeight+100))*1.4)+18)*(kbg/100));
+
+				knockbacks.push({
+					character: characterData.Characters[Object.keys(characterData.Characters)[i]],
+					value: knockback
+				});
+			}
+			return knockbacks;
+		}
+
+		function bubbleChart(percent) {
+			svg2.selectAll(".bubble").remove();
+			svg2.selectAll(".bubbles").remove();
+			svg2.selectAll(".bubbleText").remove();
+			d3.select("#bubble-chart-view").select(".bubbles-percent").remove();
+
+			var tempx = 0;
+			var tempy = 0;
+			var arr = moveKBAllTargets(percent);
+			var tempMax = 0;
+			var tempMin = 99999;
+
+			var baseDist = knockbackDistances(currentAttacker, currentMove, currentTarget);
+			baseDist = baseDist[Math.floor(percent / 20)];
+			var calcDist = Math.sqrt(Math.pow(baseDist.x, 2) + Math.pow(baseDist.y, 2));
+
+			for (var i = 0; i < arr.length; i++) {
+				tempMin = Math.min(tempMin, arr[i].value);
+				tempMax = Math.max(tempMax, arr[i].value);
+			}
+
+			var nodes = bubble.nodes({
+				children: moveKBAllTargets(percent)
+				})
+				.filter(function(d) {
+					return !d.children;
+				});
+
+			var bubbles = svg2.append("g")
+				.attr("transform", "translate(20, 20)")
+				.selectAll(".bubbles")
+				.data(nodes)
+				.enter();
+
+			var bubblesPercent = d3.select("#bubble-chart-view").append("text")
+				.attr("class", "bubbles-percent")
+				.style("margin-left", -1 * bubbleViewWidth / 2 - 30 + "px")
+				.text(function() {
+					return percent + "%";
+				});
+
+			bubbles.append("circle")
+				.attr("class", "bubble")
+				.attr("r", function(d) {
+					return Math.min(d.value / calcDist * 15);
+				})
+				.attr("cx", function(d) {
+					return d.x;
+				})
+				.attr("cy", function(d) {
+					return d.y;
+				})
+				.style("fill", function(d){
+					return d3.rgb(((d.value - tempMin)/(tempMax-tempMin)) * 255, 0, 0);
+				})
+				.on("mouseover", function(d) {
+					bubblesChar.text(function() {
+						return d.character.character;
+					});
+				});
+		}
+	</script>
+</body>

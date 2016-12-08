@@ -1,0 +1,59 @@
+character,fall_speed,gravity,weight
+Bayonetta,1.77,0.12,84
+Bowser,1.39,0.11,130
+Bowser Jr,1.65,0.092,108
+Captain Falcon,1.837,0.12,104
+Charizard,1.4,0.11,116
+Cloud,1.68,0.098,100
+Corrin,1.65,0.092,98
+Dark Pit,1.48,0.081,96
+Diddy Kong,1.75,0.105,93
+Donkey Kong,1.63,0.08505,122
+Dr. Mario,1.5,0.08715,98
+Duck Hunt,1.65,0.076,91
+Falco,1.8,0.13,82
+Fox,2.05,0.19,79
+Ganondorf,1.65,0.10784,113
+Greninja,1.85,0.18,94
+Ike,1.65,0.092,107
+Jigglypuff,0.98,0.05309,68
+King Dedede,1.95,0.08788,119
+Kirby,1.23,0.06405,79
+Link,1.6,0.096,104
+Little Mac,1.8,0.08,82
+Lucario,1.68,0.084,99
+Lucas,1.37,0.09,94
+Lucina,1.58,0.075,90
+Luigi,1.25,0.075,97
+Mario,1.5,0.08715,98
+Marth,1.58,0.075,90
+Mega Man,1.8,0.1071,102
+Meta Knight,1.66,0.11,80
+Mewtwo,1.5,0.082,74
+Mii Swordfighter,1.6,0.096,100
+Mii Brawler,1.7,0.1,100
+Mii Gunner,1.45,0.08716,100
+Game And Watch,1.24,0.08,75
+Ness,1.31,0.077,94
+Olimar,1.35,0.068,79
+Pac-Man,1.35,0.072,95
+Palutena,1.4,0.105,91
+Peach,1.15,0.068,89
+Pikachu,1.55,0.095,79
+Pit,1.48,0.081,96
+R.O.B,1.6,0.09,106
+Robin,1.5,0.089,95
+Rosalina,1.2,0.062,77
+Roy,1.8,0.114,95
+Ryu,1.6,0.12,103
+Samus,1.3,0.077,108
+Shiek,1.75,0.15,81
+Shulk,1.5,0.085,102
+Sonic,1.45,0.09,94
+Toon Link,1.28,0.079,93
+Villager,1.32,0.078,97
+Wario,1.61,0.092,107
+Wii Fit Trainer,1.3,0.09,96
+Yoshi,1.29,0.08,104
+Zelda,1.35,0.071,85
+Zero Suit Samus,1.7,0.12,80

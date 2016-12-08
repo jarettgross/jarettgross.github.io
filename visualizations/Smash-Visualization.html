@@ -231,6 +231,7 @@
 			attackerSelect = document.getElementById("attacker-select");
 			targetSelect   = document.getElementById("target-select");
 			moveSelect     = document.getElementById("move-select");
+			createVisualization();
 		});
 
 		//================================
@@ -250,112 +251,114 @@
 		//  }
 		//**************************
 		var dataArray = [];
-		d3.csv("characters.csv", function(data) {
-			data.forEach(function(d) {
-				dataArray.push({
-	    			character: Object.values(d)[0],
-	    			fallSpeed: Object.values(d)[1],
-	    			gravity:   Object.values(d)[2],
-	    			weight:    Object.values(d)[3]
-	    		});
-    		});
-
-			var charactersJSON = {
-				Characters: {}
-			};
-			for (var i = 0; i < dataArray.length; i++) {
-				//Add values to the given character
-				charactersJSON.Characters[dataArray[i].character] = {
-					character: dataArray[i].character,
-					fallSpeed: dataArray[i].fallSpeed,
-					gravity:   dataArray[i].gravity,
-					weight:    dataArray[i].weight
-				};
-			}
-			characterData = charactersJSON;
-
-			//Parse all move data into array of objects
-			//Structure:
-			//*************************
-			//  Characters: {
-			//    Bayonetta: {
-			//      Moves: {
-			//		  Jab: {
-			//          baseDamage:  5,
-			//          angle:       5,
-			//          baseKB:      5,
-			//          kbGrowth:    5,
-			//          launchAngle: 5,
-			//          hitstun:     5
-			//        },
-			//        Throw: { ... }
-			//      }
-			//    },
-			//    Mario: { ... }
-			//  }
-			//**************************
-			var moveArray = [];
-			d3.csv("Sm4sh-Data-Final.csv", function(data) {
+		function createVisualization() {
+			d3.csv("characters.csv", function(data) {
 				data.forEach(function(d) {
-					moveArray.push({
-		    			character:   Object.values(d)[0],
-						move:        Object.values(d)[1],
-						baseDamage:  Object.values(d)[2],
-						damage:      Object.values(d)[3],
-						angle:       Object.values(d)[4], //use launch angle
-						baseKB:      Object.values(d)[5],
-						kbGrowth:    Object.values(d)[6],
-						launchAngle: Object.values(d)[7], //use this
-						hitstun:     Object.values(d)[8]
+					dataArray.push({
+		    			character: Object.values(d)[0],
+		    			fallSpeed: Object.values(d)[1],
+		    			gravity:   Object.values(d)[2],
+		    			weight:    Object.values(d)[3]
 		    		});
 	    		});
 
-				var characterMovesJSON = {
+				var charactersJSON = {
 					Characters: {}
 				};
-
-				for (var j = 0; j < moveArray.length; j++) {
-					//If character not yet in array
-					if (!characterMovesJSON.Characters[moveArray[j].character])  {
-						//Add the "moves" key
-						characterMovesJSON.Characters[moveArray[j].character] = {
-							Moves: {}
-						};
-					}
-					characterMovesJSON.Characters[moveArray[j].character].Moves[moveArray[j].move] = new Object();
-					//Add values to the given move
-					characterMovesJSON.Characters[moveArray[j].character].Moves[moveArray[j].move] = {
-						baseDamage:  moveArray[j].baseDamage,
-						angle:       moveArray[j].angle,
-						baseKB:      moveArray[j].baseKB,
-						kbGrowth:    moveArray[j].kbGrowth,
-						launchAngle: moveArray[j].launchAngle,
-						hitstun:     moveArray[j].hitstun
+				for (var i = 0; i < dataArray.length; i++) {
+					//Add values to the given character
+					charactersJSON.Characters[dataArray[i].character] = {
+						character: dataArray[i].character,
+						fallSpeed: dataArray[i].fallSpeed,
+						gravity:   dataArray[i].gravity,
+						weight:    dataArray[i].weight
 					};
 				}
-				moveData = characterMovesJSON;
+				characterData = charactersJSON;
 
-				//Create the select dropdowns
-				createSelects();
+				//Parse all move data into array of objects
+				//Structure:
+				//*************************
+				//  Characters: {
+				//    Bayonetta: {
+				//      Moves: {
+				//		  Jab: {
+				//          baseDamage:  5,
+				//          angle:       5,
+				//          baseKB:      5,
+				//          kbGrowth:    5,
+				//          launchAngle: 5,
+				//          hitstun:     5
+				//        },
+				//        Throw: { ... }
+				//      }
+				//    },
+				//    Mario: { ... }
+				//  }
+				//**************************
+				var moveArray = [];
+				d3.csv("Sm4sh-Data-Final.csv", function(data) {
+					data.forEach(function(d) {
+						moveArray.push({
+			    			character:   Object.values(d)[0],
+							move:        Object.values(d)[1],
+							baseDamage:  Object.values(d)[2],
+							damage:      Object.values(d)[3],
+							angle:       Object.values(d)[4], //use launch angle
+							baseKB:      Object.values(d)[5],
+							kbGrowth:    Object.values(d)[6],
+							launchAngle: Object.values(d)[7], //use this
+							hitstun:     Object.values(d)[8]
+			    		});
+		    		});
 
-				//Call createTrajectory method and whatever else you need inside the event listeners
-				svg.on("click", function(){
-					svg.selectAll("circle").remove();
-					var coords = d3.mouse(this);
-					startPosX = coords[0];
-					startPosY = coords[1];
-					var circle = svg.append("circle")
-					.attr("cx", startPosX)
-					.attr("cy", startPosY)
-					.attr("r", 10);
-					createTrajectory(currentAttacker, currentMove, currentTarget);
-					// .on("click", function() {
-					// 	createTrajectory(currentAttacker, currentMove, currentTarget)
-					// });
+					var characterMovesJSON = {
+						Characters: {}
+					};
+
+					for (var j = 0; j < moveArray.length; j++) {
+						//If character not yet in array
+						if (!characterMovesJSON.Characters[moveArray[j].character])  {
+							//Add the "moves" key
+							characterMovesJSON.Characters[moveArray[j].character] = {
+								Moves: {}
+							};
+						}
+						characterMovesJSON.Characters[moveArray[j].character].Moves[moveArray[j].move] = new Object();
+						//Add values to the given move
+						characterMovesJSON.Characters[moveArray[j].character].Moves[moveArray[j].move] = {
+							baseDamage:  moveArray[j].baseDamage,
+							angle:       moveArray[j].angle,
+							baseKB:      moveArray[j].baseKB,
+							kbGrowth:    moveArray[j].kbGrowth,
+							launchAngle: moveArray[j].launchAngle,
+							hitstun:     moveArray[j].hitstun
+						};
+					}
+					moveData = characterMovesJSON;
+
+					//Create the select dropdowns
+					createSelects();
+
+					//Call createTrajectory method and whatever else you need inside the event listeners
+					svg.on("click", function(){
+						svg.selectAll("circle").remove();
+						var coords = d3.mouse(this);
+						startPosX = coords[0];
+						startPosY = coords[1];
+						var circle = svg.append("circle")
+						.attr("cx", startPosX)
+						.attr("cy", startPosY)
+						.attr("r", 10);
+						createTrajectory(currentAttacker, currentMove, currentTarget);
+						// .on("click", function() {
+						// 	createTrajectory(currentAttacker, currentMove, currentTarget)
+						// });
+					});
+					
 				});
-				
 			});
-		});
+		}
 
 		//================================
 		// HELPER FUNCTIONS

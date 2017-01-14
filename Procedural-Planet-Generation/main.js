@@ -122,13 +122,20 @@ function render() {
     if (isUp)    planet.rotation.x -= 0.015;
     if (isDown)  planet.rotation.x += 0.015;
 
-
+    if (isPlus) {
+        camera.fov -= 0.25;
+        camera.updateProjectionMatrix();
+    }
+    if (isMinus) {
+        camera.fov += 0.25;
+        camera.updateProjectionMatrix();
+    }
 
     renderer.render(scene, camera);
 }
 
 //Set up controls for rotating planet
-var isLeft, isUp, isRight, isDown;
+var isLeft, isUp, isRight, isDown, isPlus, isMinus;
 function initControls() {
     //Keyboard controls
     window.onkeydown = function(e) {

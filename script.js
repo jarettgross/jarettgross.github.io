@@ -343,11 +343,11 @@ function prepareShow(id) {
 		}
 		$(".control-next").css("margin-left", newMargin - 28.2667 + "px");
 		if (id == "summate" || id == "algorithms") {
-			$(show).animate({ height: "700px" }, 500, "swing");
+			$(show).animate({ height: "800px" }, 500, "swing");
 		} else if (id == "procGen") {
-			$(show).animate({ height: "700px" }, 500, "swing");
+			$(show).animate({ height: "800px" }, 500, "swing");
 		} else {
-			$(show).animate({ height: "600px" }, 500, "swing");
+			$(show).animate({ height: "700px" }, 500, "swing");
 		}
 	}
 	$(show).css("display", "inline");

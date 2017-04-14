@@ -13,16 +13,17 @@
     display: block;
     padding: 5px 10px;
 	color: #FFFFFF;
-	background-color: #383C3D;
+	background-color: #545454;
+	border-radius: 5px;
     cursor: pointer;
 	font-size: 1em;
 }
 
 @media only screen and (min-width: 768px) {
 	#createDungeonButton:hover {
-		-webkit-box-shadow: 0 0 10px #383C3D;
-		-moz-box-shadow: 0 0 10px #383C3D;
-		box-shadow: 0 0 10px #383C3D;
+		-webkit-box-shadow: 0 0 5px #383C3D;
+		-moz-box-shadow: 0 0 5px #383C3D;
+		box-shadow: 0 0 5px #383C3D;
 	}
 }
 
@@ -38,19 +39,19 @@ input[type=range]::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 7px;
 	cursor: pointer;
-	box-shadow: 0px 0px 0px #000000;
+	box-shadow: 0px 0px 0px #545454;
 	background: #FFFFFF;
 	border-radius: 5px;
-	border: 1px solid #000000;
+	border: 1px solid #545454;
 }
 
 input[type=range]::-webkit-slider-thumb {
-	box-shadow: 0px 0px 0px #000000;
-	border: 1px solid #000000;
+	box-shadow: 0px 0px 0px #545454;
+	border: 1px solid #545454;
 	height: 16px;
 	width: 26px;
 	border-radius: 6px;
-	background: #000000;
+	background: #545454;
 	cursor: pointer;
 	-webkit-appearance: none;
 	margin-top: -5.5px;
@@ -65,19 +66,19 @@ input[type=range]::-moz-range-track {
 	height: 7px;
 	cursor: pointer;
 	animate: 0.2s;
-	box-shadow: 0px 0px 0px #000000;
+	box-shadow: 0px 0px 0px #545454;
 	background: #FFFFFF;
 	border-radius: 5px;
-	border: 1px solid #000000;
+	border: 1px solid #545454;
 }
 
 input[type=range]::-moz-range-thumb {
-	box-shadow: 0px 0px 0px #000000;
-	border: 1px solid #000000;
+	box-shadow: 0px 0px 0px #545454;
+	border: 1px solid #545454;
 	height: 16px;
 	width: 26px;
 	border-radius: 6px;
-	background: #000000;
+	background: #545454;
 	cursor: pointer;
 }
 

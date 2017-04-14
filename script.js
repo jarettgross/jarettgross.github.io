@@ -4,7 +4,7 @@ var isNavReset = true;
 var isShowOpen = false;
 var prevShow = "";
 
-$(window).resize(function(){
+$(window).resize(function() {
 	$(".header").css("height", $(window).height());
 	$(".full-content").css("min-height", $(window).height());
 	$(".half-content").css("min-height", 0.5 * $(window).height());
@@ -256,19 +256,27 @@ function prepareShow(id) {
 	var imageWidth;
 	var show = "";
 	//check which show is open, place show in place according to current screen width
-	if (id == "playship") {
-		show = ("#playship-show");
-		imageWidth = "300";
+	if (id == "planet") {
+		show = ("#planet-show");
+		imageWidth = "400";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#tunnel-wrap");   }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#summate-wrap");  }
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#summate-wrap");  }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#playship-wrap"); }
+		else {							  $(show).insertAfter("#planet-wrap");   }
+
+	} else if (id == "playship") {
+		show = ("#playship-show");
+		imageWidth = "200";
+		imageHeight = "300";
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#summate-wrap");  }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#playship-wrap"); }
 		else {							  $(show).insertAfter("#playship-wrap"); }
 
 	} else if (id == "summate") {
 		show = ("#summate-show");
 		imageWidth = "250";
-		imageHeight = "500";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#tunnel-wrap");  }
+		imageHeight = "300";
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#summate-wrap");  }
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#summate-wrap"); }
 		else {							  $(show).insertAfter("#summate-wrap"); }
 		
@@ -276,24 +284,24 @@ function prepareShow(id) {
 		show = ("#tunnel-show");
 		imageWidth = "500";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#tunnel-wrap");  }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#procGen-wrap"); }
-		else {							  $(show).insertAfter("#tunnel-wrap");  }
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#boiler-escape-wrap"); }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");        }
+		else {							  $(show).insertAfter("#tunnel-wrap");        }
 		
 	} else if (id == "procGen") {
 		show = ("#procGen-show");
 		imageWidth = "500";
-		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#algorithms-wrap"); }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#procGen-wrap");    }
-		else {							  $(show).insertAfter("#procGen-wrap");    }
+		imageHeight = "510";
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#boiler-escape-wrap"); }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#boiler-escape-wrap"); }
+		else {							  $(show).insertAfter("#procGen-wrap");       }
 		
 	} else if (id == "boiler-escape") {
 		show = ("#boiler-escape-show");
 		imageWidth = "500";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#algorithms-wrap");    }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap");    }
+		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#boiler-escape-wrap"); }
+		else if (screenWidthLevel == 1) { $(show).insertAfter("#boiler-escape-wrap"); }
 		else {							  $(show).insertAfter("#boiler-escape-wrap"); }
 		
 	} else if (id == "algorithms") {
@@ -304,13 +312,6 @@ function prepareShow(id) {
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
 		else {							  $(show).insertAfter("#algorithms-wrap"); }
 		
-	} else if (id == "calendar") { 
-		show = ("#calendar-show");
-		imageWidth = "500";
-		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#calendar-wrap"); }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#calendar-wrap"); }
-		else {							  $(show).insertAfter("#calendar-wrap"); }
 	}
 
 	isShowOpen = true;
@@ -322,13 +323,15 @@ function prepareShow(id) {
 	
 	$(show).addClass("open");
 	if (document.documentElement.clientWidth >= 1200) { //side-by-side layout
-		$(".slides div ul li").css("height", "500px");
-		$(".show-wrapper").css("height", "500px");
+		$(".slides div ul li").css("height", "300px");
+		$(".show-wrapper").css("height", "300px");
 		$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
 		if (id == "procGen") {
-			$(show).animate({height: $(".slides div ul li").height() + 90 + "px" }, 500, "swing");
+			$(show).animate({height: parseInt(imageHeight) + 90 + "px" }, 500, "swing");
+		} else if (id == 'algorithms') {
+			$(show).animate({ height: parseInt(imageHeight) + 100 + "px" }, 500, "swing");
 		} else {
-			$(show).animate({ height: $(".slides div ul li").height() + 50 + "px" }, 500, "swing");
+			$(show).animate({ height: parseInt(imageHeight) + 50 + "px" }, 500, "swing");
 		}
 	} else { //vertical layout
 		$(".slides div ul li").css("height", imageHeight + "px");
@@ -341,6 +344,8 @@ function prepareShow(id) {
 		$(".control-next").css("margin-left", newMargin - 28.2667 + "px");
 		if (id == "summate" || id == "algorithms") {
 			$(show).animate({ height: "700px" }, 500, "swing");
+		} else if (id == "procGen") {
+			$(show).animate({ height: "700px" }, 500, "swing");
 		} else {
 			$(show).animate({ height: "600px" }, 500, "swing");
 		}
@@ -349,6 +354,6 @@ function prepareShow(id) {
 	
 	//scroll to the show
 	$('html, body').animate({
-		scrollTop: $("#" + id).offset().top + $("#" + id).height()
+		scrollTop: $("#" + id).offset().top + $("#" + id).height() - 100
 	}, 1000);
 }

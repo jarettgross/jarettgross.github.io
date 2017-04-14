@@ -37,10 +37,12 @@ svg {
 	justify-content: space-between;
 	height: 20px;
 	padding: 10px 0px;
-	background-color: #586D75;
+	background-color: #545454;
 	right: 0;
 	background-position: right;
 	z-index: 50;
+	border-bottom-left-radius: 5px;
+	padding-left: 5px;
 }
 
 .nav-svg {
@@ -106,13 +108,13 @@ a > svg {
 	position: absolute;
 	right: 0;
 	z-index: 9999;
-	background-color: #586D75;
+	background-color: #545454;
 }
 
 @media only screen and (min-width: 768px) {
 
 	.nav-wrapper > .center-btn:hover {
-		background-color: rgba(20, 20, 20, 0.1);
+		background-color: rgba(255, 255, 255, 0.3);
 	}
 }
 
@@ -120,14 +122,12 @@ a > svg {
 
 .header {
 	height: 100vh;
-	background-image: url("images/header-bg.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
 }
 
 .top-wrapper {
-	background-color: rgba(84, 161, 190, 0.3);
 	height: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -147,7 +147,7 @@ a > svg {
 	-ms-flex-align: center;
 	align-items: center;
 	text-align: center;
-	color: #000000;
+	color: #545454;
 }
 
 #my-name {
@@ -163,7 +163,7 @@ a > svg {
 
 #scroll-down-button {
 	margin-top: calc(50vh - 100px);
-	fill: #000000;
+	fill: #545454;
 }
 
 /** ABOUT **/
@@ -171,7 +171,7 @@ a > svg {
 .half-content {
 	min-height: 50vh;
 	height: auto;
-	background-color: #383C3D;
+	background-color: #545454;
 	background-position: center;
 }
 
@@ -179,8 +179,7 @@ a > svg {
 	border-style: hidden;
 	border-width: 1px;
 	border-color: #8FA7B0;
-	background-color: #FFFFFF;
-	color: #383C3D;
+	color: #FFFFFF;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -198,8 +197,12 @@ a > svg {
 	padding: 40px 0 0 0;
 	margin: 0 0 20px 0;
 	font-size: 2em;
-	color: #586D75;
+	color: #545454;
 	flex: 0;
+}
+
+.other-heading {
+	color: #FFFFFF;
 }
 
 .about-wrapper {
@@ -230,16 +233,18 @@ a > svg {
 }
 
 #resume-pdf {
-	padding: 5px 10px;
-	color: #FFFFFF;
-	background-color: #586D75;
+	font-size: 12px;
+	padding: 10px 15px;
+	border-radius: 5px;
+	color: #545454;
+	background-color: #FFFFFF;
 }
 
 @media only screen and (min-width: 768px) {
 	#resume-pdf:hover {
-		-webkit-box-shadow: 0 0 10px #383C3D;
-		-moz-box-shadow: 0 0 10px #383C3D;
-		box-shadow: 0 0 10px #383C3D;
+		-webkit-box-shadow: 0 0 5px #FFFFFF;
+		-moz-box-shadow: 0 0 5px #FFFFFF;
+		box-shadow: 0 0 5px #FFFFFF;
 	}
 }
 
@@ -259,7 +264,7 @@ a > svg {
 	-ms-flex-direction: column;
 	flex-direction: column;
 	justify-content: center;
-	border-style: hidden hidden solid hidden;
+	border-style: solid hidden solid hidden;
 	border-width: 1px;
 	border-color: rgba(88, 109, 117, 0.2);
 }
@@ -308,7 +313,7 @@ textarea {
 	font-family: 'Amiko', sans-serif;
 	border-style: solid;
 	border-width: 1px;
-	background-color: rgba(245, 245, 245, 0.5);
+	background-color: rgba(245, 245, 245, 0.3);
 }
 
 textarea:focus {
@@ -330,7 +335,7 @@ textarea:focus {
 	flex-direction: column;
 	padding-bottom: 3px;
 	flex: 1;
-	max-width: 100%;
+	max-width: 100%;;
 }
 
 #email-message {
@@ -339,6 +344,8 @@ textarea:focus {
 	min-width: 240.5px; /**FIXME**/
 	min-height: 100px;
 	max-width: 100%;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 }
 
 #email-from {
@@ -348,6 +355,7 @@ textarea:focus {
 	border-right-width: 0px;
 	min-width: 200px;
 	max-width: 100%;
+	border-bottom-left-radius: 5px;
 }
 
 #send-email {
@@ -355,8 +363,9 @@ textarea:focus {
 	text-align: center;
 	padding: 18.5px 0;
 	color: white;
-	background-color: #586D75;
+	background-color: #545454;
 	cursor: pointer;
+	border-bottom-right-radius: 5px;
 }
 
 @media only screen and (min-width: 768px) {
@@ -453,7 +462,7 @@ textarea:focus {
 }
 
 .grayscale { 
-	fill: #707070;
+	fill: #545454;
 }
 
 .account {
@@ -473,7 +482,7 @@ textarea:focus {
 .full-content {
 	min-height: 100vh;
 	height: auto;
-	background-color: rgba(88, 109, 117, 0.05);
+	background-color: #FFFFFF;
 	background-position: center;
 	padding-bottom: 20px;
 	display: -webkit-box;
@@ -527,7 +536,7 @@ textarea:focus {
 	margin-top: 20px;
 	border-style: solid;
 	border-width: 1px;
-	border-radius: 2px;
+	border-radius: 5px;
 	cursor: pointer;
 }
 
@@ -570,6 +579,10 @@ textarea:focus {
 	-ms-transition: all 0.3s ease;
 	-webkit-transition: all 0.3s ease;
 	-o-transition: all 0.3s ease;
+}
+
+#planet {
+	background-image: url("images/planet_display.png");
 }
 
 #playship {
@@ -672,7 +685,7 @@ textarea:focus {
 	display: block;
 	padding: 10px 5px;
 	color: white;
-	background-color: #383C3D;
+	background-color: #545454;
 	text-decoration: none;
 	opacity: 0.7;
 	cursor: pointer;
@@ -682,6 +695,16 @@ textarea:focus {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+}
+
+.control-prev {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.control-next {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 @media only screen and (min-width: 768px) {

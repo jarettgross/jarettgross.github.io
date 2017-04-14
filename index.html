@@ -81,7 +81,7 @@
 		<div id="main-content">
 			<div class="content">
 				<section class="half-content" id="about" name="about">
-					<div class="heading">
+					<div class="heading other-heading">
 						<h2>ABOUT</h2>
 					</div>
 					<div class="about-wrapper">
@@ -109,6 +109,11 @@
 					<div class="project-list">
 					
 						<!-- Show Pictures of Projects -->
+						<div class="display-wrapper" id="planet-wrap">
+							<div class="display" id="planet">
+								<div class="overlay"><span class="display-text">PROCEDURAL PLANETS</span></div>
+							</div>
+						</div>
 						<div class="display-wrapper" id="playship-wrap">
 							<div class="display" id="playship">
 								<div class="overlay"><span class="display-text">PLAYSHIP</span></div>
@@ -139,13 +144,31 @@
 								<div class="overlay"><span class="display-text">ALGORITHMS</span></div>
 							</div>
 						</div>
-						<div class="display-wrapper" id="calendar-wrap">
-							<div class="display" id="calendar">
-								<div class="overlay"><span class="display-text">CALENDAR</span></div>
-							</div>
-						</div>
 						
 						<!-- Show Full Projects -->
+						<div class="horizontal" id="planet-show">
+							<div class="slides">
+								<div class="show-wrapper">
+									<ul class="show-list">
+										<li style="background-image: url('images/planet_display.png')"></li>
+									</ul>
+								</div>
+							</div>
+							<div class="description-wrapper">
+								<div class="description">
+									<div class="project-title">PROCEDURAL PLANETS</div>
+									<span>
+										I created a procedural planet generator in Javascript, using WebGL and Three.js. 
+										The planets begin with the tessellation of a sphere and are then altered depending on the type of planet being generated. Planets are procedurally generated based off a seed to generate Perlin noise to alter the height, and therefore terrain type, of that part of the planet. Planets can be formed with triangles or with hexagons and pentagons.
+										<br><br>
+										<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
+										<br>
+										<a href="http://jarettgross.me/Procedural-Planet-Generation/planets.html" class="project-link">Try it out here ➜</a>
+									</span>
+								</div>
+							</div>
+						</div>
+
 						<div class="horizontal" id="playship-show">
 							<div class="slides">
 								<div class="show-wrapper">
@@ -158,11 +181,12 @@
 								<div class="description">
 									<div class="project-title">PLAYSHIP</div>
 									<span>
-										I created <a href="https://www.playship.io">PlayShip</a>, a 
-										website where people can pass along games to others. The site is 
+										I created PlayShip, a website where people can pass along games to others. The site is 
 										community-driven and free-to-use, allowing users to submit their own 
 										games and ship them to other people. The site is built from scratch, 
 										using Node.js and Express for my backend.
+										<br><br>
+										<a href="playship.io" class="project-link">Check out the site here ➜</a>
 									</span>
 								</div>
 							</div>
@@ -220,7 +244,7 @@
 										The game also features four different character classes, a variety of
 										weapons, and some special equipment.
 										<br><br>
-										<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub)</a>
+										<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
 									</span>
 								</div>
 							</div>
@@ -255,7 +279,7 @@
 										procedurally placed, each containing at least one doorway and a corridor leading 
 										to another room.
 										<br><br>
-										<a class="code" href="https://github.com/jarettgross/procedurally-generated-dungeon">Code (GitHub)</a>
+										<a class="code" href="https://github.com/jarettgross/procedurally-generated-dungeon">Code (GitHub) ➜</a>
 									</span>
 								</div>
 							</div>
@@ -280,9 +304,9 @@
 										who created the art assets. The game focuses on the use of a particle system to 
 										move the character around and interact with the environment.
 										<br><br>
-										<a class="code" href="https://github.com/jarettgross/Water-Platformer">Code (GitHub)</a>
+										<a class="code" href="https://github.com/jarettgross/Water-Platformer">Code (GitHub) ➜</a>
 										<br>
-										<a class="code" href="http://www.kongregate.com/games/nam_cap/boiler-escape">Play it on Kongregate</a>
+										<a class="code" href="http://www.kongregate.com/games/nam_cap/boiler-escape">Play it on Kongregate ➜</a>
 									</span>
 								</div>
 							</div>
@@ -312,33 +336,7 @@
 										learned from Matlab's fitctree function as my weak learners; an algorithm
 										for bagging decision trees to compute the out of bag error for a dataset.
 										<br><br>
-										<a class="code" href="https://github.com/jarettgross/implemented-algorithms">Code (GitHub)</a>
-									</span>
-								</div>
-							</div>
-						</div>
-						
-						<div class="horizontal" id="calendar-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<ul class="show-list">
-										<li style="background-image: url('images/calendar_specific1.png')"></li>
-									</ul>
-								</div>
-							</div>
-							<div class="description-wrapper">
-								<div class="description">
-									<div class="project-title">CALENDAR</div>
-									<span>
-										I created a calendar which can
-										keep track of users and allow each each user to have their own
-										calendar full of events. These events can be tagged with a
-										category, shared with other users, edited, and deleted.
-										JavaScript was used for the front-end of the site, while
-										PHP was used as the back-end. MySQL was used to store all
-										of the events and users.
-										<br><br>
-										<a class="code" href="https://github.com/jarettgross/javascript-calendar">Code (GitHub)</a>
+										<a class="code" href="https://github.com/jarettgross/implemented-algorithms">Code (GitHub) ➜</a>
 									</span>
 								</div>
 							</div>

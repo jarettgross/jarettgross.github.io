@@ -304,14 +304,6 @@ function prepareShow(id) {
 		else if (screenWidthLevel == 1) { $(show).insertAfter("#boiler-escape-wrap"); }
 		else {							  $(show).insertAfter("#boiler-escape-wrap"); }
 		
-	} else if (id == "algorithms") {
-		show = ("#algorithms-show");
-		imageWidth = "500";
-		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#algorithms-wrap"); }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#algorithms-wrap"); }
-		else {							  $(show).insertAfter("#algorithms-wrap"); }
-		
 	}
 
 	isShowOpen = true;

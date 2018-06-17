@@ -80,6 +80,8 @@
 		
 		<div id="main-content">
 			<div class="content">
+				
+				<!-- About Section -->
 				<section class="half-content" id="about" name="about">
 					<div class="heading other-heading">
 						<h2>ABOUT</h2>
@@ -110,202 +112,206 @@
 						<!-- Show Pictures of Projects -->
 						<div class="display-wrapper" id="planet-wrap">
 							<div class="display" id="planet">
-								<div class="overlay"><span class="display-text">PROCEDURAL PLANETS</span></div>
+								<div class="overlay"><span class="display-text no-select">Procedural Planets</span></div>
 							</div>
 						</div>
 						<div class="display-wrapper" id="playship-wrap">
 							<div class="display" id="playship">
-								<div class="overlay"><span class="display-text">PLAYSHIP</span></div>
+								<div class="overlay"><span class="display-text no-select">Playship</span></div>
 							</div>
 						</div>
 						<div class="display-wrapper" id="summate-wrap">
 							<div class="display" id="summate">
-								<div class="overlay"><span class="display-text">SUMMATE</span></div>
+								<div class="overlay"><span class="display-text no-select">Summate</span></div>
 							</div>
 						</div>
 						<div class="display-wrapper" id="tunnel-wrap">
 							<div class="display" id="tunnel">
-								<div class="overlay"><span class="display-text">TUNNEL</span></div>
+								<div class="overlay"><span class="display-text no-select">Tunnel</span></div>
 							</div>
 						</div>
 						<div class="display-wrapper" id="procGen-wrap">
 							<div class="display" id="procGen">
-								<div class="overlay"><span class="display-text">PROCGEN MAP</span></div>
+								<div class="overlay"><span class="display-text no-select">Procgen Map</span></div>
 							</div>
 						</div>
 						<div class="display-wrapper" id="boiler-escape-wrap">
 							<div class="display" id="boiler-escape">
-								<div class="overlay"><span class="display-text">BOILER ESCAPE</span></div>
+								<div class="overlay"><span class="display-text no-select">Boiler Escape</span></div>
 							</div>
 						</div>
 						
 						<!-- Show Full Projects -->
-						<div class="horizontal" id="planet-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<ul class="show-list">
-										<li style="background-image: url('images/planet_display.png')"></li>
-									</ul>
+						<div class="container-horizontal">
+							<div class="horizontal" id="planet-show">
+								<div class="slides">
+									<div class="show-wrapper">
+										<ul class="show-list">
+											<li style="background-image: url('images/planet_display.png')"></li>
+										</ul>
+									</div>
+								</div>
+								<div class="description-wrapper">
+									<div class="description">
+										<div class="project-title">Procedural Planets</div>
+										<span>
+											I created a procedural planet generator in Javascript, using WebGL and Three.js. 
+											The planets begin with the tessellation of a sphere and are then altered depending on the type of planet being generated. Planets are procedurally generated based off a seed to generate Perlin noise to alter the height, and therefore terrain type, of that part of the planet. Planets can be formed with triangles or with hexagons and pentagons.
+											<br><br>
+											<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
+											<br>
+											<a href="http://jarettgross.me/Procedural-Planet-Generation/planets.html" class="project-link">Try it out here ➜</a>
+										</span>
+									</div>
 								</div>
 							</div>
-							<div class="description-wrapper">
-								<div class="description">
-									<div class="project-title">PROCEDURAL PLANETS</div>
-									<span>
-										I created a procedural planet generator in Javascript, using WebGL and Three.js. 
-										The planets begin with the tessellation of a sphere and are then altered depending on the type of planet being generated. Planets are procedurally generated based off a seed to generate Perlin noise to alter the height, and therefore terrain type, of that part of the planet. Planets can be formed with triangles or with hexagons and pentagons.
-										<br><br>
-										<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
-										<br>
-										<a href="http://jarettgross.me/Procedural-Planet-Generation/planets.html" class="project-link">Try it out here ➜</a>
-									</span>
-								</div>
-							</div>
-						</div>
 
-						<div class="horizontal" id="playship-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<ul class="show-list">
-										<li style="background-image: url('images/playship_specific1.svg')"></li>
-									</ul>
+							<div class="horizontal" id="playship-show">
+								<div class="slides">
+									<div class="show-wrapper">
+										<ul class="show-list">
+											<li style="background-image: url('images/playship_specific1.svg')"></li>
+										</ul>
+									</div>
+								</div>
+								<div class="description-wrapper">
+									<div class="description">
+										<div class="project-title">Playship</div>
+										<span>
+											I created PlayShip, a website where people can pass along games to others. The site is 
+											community-driven and free-to-use, allowing users to submit their own 
+											games and ship them to other people. The site is built from scratch, 
+											using Node.js and Express for my backend.
+											<br><br>
+										</span>
+									</div>
 								</div>
 							</div>
-							<div class="description-wrapper">
-								<div class="description">
-									<div class="project-title">PLAYSHIP</div>
-									<span>
-										I created PlayShip, a website where people can pass along games to others. The site is 
-										community-driven and free-to-use, allowing users to submit their own 
-										games and ship them to other people. The site is built from scratch, 
-										using Node.js and Express for my backend.
-										<br><br>
-									</span>
+							
+							<div class="horizontal" id="summate-show">
+								<div class="slides">
+									<div class="show-wrapper">
+										<a class="control-next">&gt;</a>
+										<a class="control-prev">&lt;</a>
+										<ul class="show-list">
+											<li style="background-image: url('images/summate_specific2.PNG')"></li>
+											<li style="background-image: url('images/summate_specific3.PNG')"></li>
+											<li style="background-image: url('images/summate_specific4.PNG')"></li>
+											<li style="background-image: url('images/summate_specific1.PNG')"></li>
+										</ul>
+									</div>
+								</div>
+								<div class="description-wrapper">
+									<div class="description">
+										<div class="project-title">Summate</div>
+										<span>
+											Using Unreal Engine 4's visual scripting, I created an iPhone
+											game. Summate is a puzzle game, where the player moves a square
+											by swiping, moving over numbers to increase or decrease a player's
+											score in order to reach the exit. This was made solely by using
+											visual scripting in Unreal Engine, with the gameplay and design
+											made by me, and the art made by Joshua Gross.
+										</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						
-						<div class="horizontal" id="summate-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<a class="control-next">></a>
-									<a class="control-prev"><</a>
-									<ul class="show-list">
-										<li style="background-image: url('images/summate_specific2.PNG')"></li>
-										<li style="background-image: url('images/summate_specific3.PNG')"></li>
-										<li style="background-image: url('images/summate_specific4.PNG')"></li>
-										<li style="background-image: url('images/summate_specific1.PNG')"></li>
-									</ul>
+							
+							<div class="horizontal" id="tunnel-show">
+								<div class="slides">
+									<div class="show-wrapper">
+										<a class="control-next">&gt;</a>
+										<a class="control-prev">&lt;</a>
+										<ul class="show-list">
+											<li style="background-image: url('images/tunnel_specific2.png')"></li>
+											<li style="background-image: url('images/tunnel_specific1.png')"></li>
+										</ul>
+									</div>
+								</div>
+								<div class="description-wrapper">
+									<div class="description">
+										<div class="project-title">Tunnel</div>
+										<span>
+											Using Unity3D and C#, I created a game for PC/Mac/Linux with a team
+											of four others. Tunnel is a multiplayer, first-person shooter
+											where the goal is to kill the other players. The game can be played
+											locally through a server with up to four players. The terrain of
+											Tunnel is procedurally generated and is also deformable; players
+											must utilize this terrain to gain an advantage over their opponents.
+											The game also features four different character classes, a variety of
+											weapons, and some special equipment.
+											<br><br>
+											<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
+										</span>
+									</div>
 								</div>
 							</div>
-							<div class="description-wrapper">
-								<div class="description">
-									<div class="project-title">SUMMATE</div>
-									<span>
-										Using Unreal Engine 4's visual scripting, I created an iPhone
-										game. Summate is a puzzle game, where the player moves a square
-										by swiping, moving over numbers to increase or decrease a player's
-										score in order to reach the exit. This was made solely by using
-										visual scripting in Unreal Engine, with the gameplay and design
-										made by me, and the art made by Joshua Gross.
-									</span>
-								</div>
-							</div>
-						</div>
-						
-						<div class="horizontal" id="tunnel-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<a class="control-next">></a>
-									<a class="control-prev"><</a>
-									<ul class="show-list">
-										<li style="background-image: url('images/tunnel_specific2.png')"></li>
-										<li style="background-image: url('images/tunnel_specific1.png')"></li>
-									</ul>
-								</div>
-							</div>
-							<div class="description-wrapper">
-								<div class="description">
-									<div class="project-title">TUNNEL</div>
-									<span>
-										Using Unity3D and C#, I created a game for PC/Mac/Linux with a team
-										of four others. Tunnel is a multiplayer, first-person shooter
-										where the goal is to kill the other players. The game can be played
-										locally through a server with up to four players. The terrain of
-										Tunnel is procedurally generated and is also deformable; players
-										must utilize this terrain to gain an advantage over their opponents.
-										The game also features four different character classes, a variety of
-										weapons, and some special equipment.
-										<br><br>
-										<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
-									</span>
-								</div>
-							</div>
-						</div>
-						
-						<div class="horizontal" id="procGen-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<div class="procGenCanvas">
-										<canvas id="dungeon" width="500" height="500"></canvas>
-										<div id="generateDungeon">
-											<button id="createDungeonButton" type="button">Generate Dungeon</button>
+							
+							<div class="horizontal" id="procGen-show">
+								<div class="slides">
+									<div class="show-wrapper">
+										<div class="procGenCanvas">
+											<canvas id="dungeon" width="500" height="500"></canvas>
+											<div id="generateDungeon">
+												<button id="createDungeonButton" type="button">Generate Dungeon</button>
+											</div>
+										</div>
+										
+										<div id="varSliders">
+											<span id="roomTriesText">Max Rooms</span>
+											<input id="roomTriesSlider" type="range" min="2" max="99" value="50" step="1" />
+											<span id="roomTriesVar"></span>
+											<br>
+											<span id="squareSizeText">Square Size</span>
+											<input id="squareSizeSlider" type="range" min="5" max="25" value="15" step="5" />
+											<span id="squareSizeVar"></span>
 										</div>
 									</div>
-									
-									<div id="varSliders">
-										<span id="roomTriesText">Max Rooms</span>
-										<input id="roomTriesSlider" type="range" min="2" max="99" value="50" step="1" />
-										<span id="roomTriesVar"></span>
-										<br>
-										<span id="squareSizeText">Square Size</span>
-										<input id="squareSizeSlider" type="range" min="5" max="25" value="15" step="5" />
-										<span id="squareSizeVar"></span>
+								</div>
+								<div class="description-wrapper">
+									<div class="description">
+										<div class="project-title">Procgen Map</div>
+										<span>
+											Using JavaScript and canvas I created a procedurally generated map. Rooms are 
+											procedurally placed, each containing at least one doorway and a corridor leading 
+											to another room.
+											<br><br>
+											<a class="code" href="https://github.com/jarettgross/procedurally-generated-dungeon">Code (GitHub) ➜</a>
+										</span>
 									</div>
 								</div>
 							</div>
-							<div class="description-wrapper">
-								<div class="description">
-									<div class="project-title">PROCGEN MAP</div>
-									<span>
-										Using JavaScript and canvas I created a procedurally generated map. Rooms are 
-										procedurally placed, each containing at least one doorway and a corridor leading 
-										to another room.
-										<br><br>
-										<a class="code" href="https://github.com/jarettgross/procedurally-generated-dungeon">Code (GitHub) ➜</a>
-									</span>
+							
+							<div class="horizontal" id="boiler-escape-show">
+								<div class="slides">
+									<div class="show-wrapper">
+										<a class="control-next">&gt;</a>
+										<a class="control-prev">&lt;</a>
+										<ul class="show-list">
+											<li style="background-image: url('images/boiler-escape_specific1.png')"></li>
+											<li style="background-image: url('images/boiler-escape_specific2.png')"></li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						</div>
-						
-						<div class="horizontal" id="boiler-escape-show">
-							<div class="slides">
-								<div class="show-wrapper">
-									<a class="control-next">></a>
-									<a class="control-prev"><</a>
-									<ul class="show-list">
-										<li style="background-image: url('images/boiler-escape_specific1.png')"></li>
-										<li style="background-image: url('images/boiler-escape_specific2.png')"></li>
-									</ul>
-								</div>
-							</div>
-							<div class="description-wrapper">
-								<div class="project-title">BOILER ESCAPE</div>
-									<span>
-										I created a water-based 2D platformer using Unity and built for HTML5. I worked 
-										with two others, Jordan Franklin who helped with level design and Mike Manfredi 
-										who created the art assets. The game focuses on the use of a particle system to 
-										move the character around and interact with the environment.
-										<br><br>
-										<a class="code" href="https://github.com/jarettgross/Water-Platformer">Code (GitHub) ➜</a>
-										<br>
-										<a class="code" href="http://www.kongregate.com/games/nam_cap/boiler-escape">Play it on Kongregate ➜</a>
-									</span>
+								<div class="description-wrapper">
+									<div class="project-title">Boiler Escape</div>
+										<span>
+											I created a water-based 2D platformer using Unity and built for HTML5. I worked 
+											with two others, Jordan Franklin who helped with level design and Mike Manfredi 
+											who created the art assets. The game focuses on the use of a particle system to 
+											move the character around and interact with the environment.
+											<br><br>
+											<a class="code" href="https://github.com/jarettgross/Water-Platformer">Code (GitHub) ➜</a>
+											<br>
+											<a class="code" href="http://www.kongregate.com/games/nam_cap/boiler-escape">Play it on Kongregate ➜</a>
+										</span>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
+
+				<!-- Contact Section -->
 				<section class="half-content" id="contact" name="contact">
 					<div class="heading">
 						<h2 id="contact-heading">CONTACT</h2>

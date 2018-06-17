@@ -1,8 +1,6 @@
 var isRightArrow = true;
 var isNavReset = true;
-
-var isShowOpen = false;
-var prevShow = "";
+var show = "";
 
 $(window).resize(function() {
 	$(".header").css("height", $(window).height());
@@ -176,28 +174,7 @@ $(document).ready(function() {
 	
 	//PROJECT DISPLAYS
 	$(".display").click(function() {
-		//animate opening of project
-		if (isShowOpen) {
-			if (prevShow == $(this).attr("id")) {
-				$(".open").animate({ height: "0" }, 500, "swing", function() {
-					$(".open").css("display", "none");
-					$(".open").removeClass("open");
-				});
-			} else { //close
-				$(".open").animate({ height: "0" }, 500, "swing", 
-					(function(id) {
-						return function() {
-							$(".open").css("display", "none");
-							$(".open").removeClass("open");
-							prepareShow(id);
-						}
-				})($(this).attr("id")));
-			}
-			isShowOpen = false;
-		} else {
-			prevShow = "";
-			prepareShow($(this).attr("id"));
-		}
+		prepareShow($(this).attr("id"));
 	});
 
 	//buttons for going through images of a project
@@ -209,6 +186,13 @@ $(document).ready(function() {
         $(".open .slides ul li:first-child").appendTo(".open .slides ul");
     });
 	
+	$(".container-horizontal").click(function(e) {
+		if (!$(e.target).parents('.container-horizontal').length > 0) {
+			$(".open").removeClass("open");
+			$('.container-horizontal').css('display', 'none');
+			$(show).css('display', 'none');
+		}
+	});
 	
 	//PROC GEN
 	document.getElementById("roomTriesVar").innerHTML = ROOM_TRIES;
@@ -244,108 +228,38 @@ $(document).ready(function() {
 
 
 function prepareShow(id) {
-	var screenWidthLevel;
-	if (document.documentElement.clientWidth >= 1200) {
-		screenWidthLevel = 2;
-	} else if (document.documentElement.clientWidth >= 768) {
-		screenWidthLevel = 1;
-	} else {
-		screenWidthLevel = 0;
-	}
-	
 	var imageWidth;
-	var show = "";
-	//check which show is open, place show in place according to current screen width
+	var imageHeight;
+	show = "#" + id + "-show";
+	var horizontalHeight = 500;
+	
 	if (id == "planet") {
-		show = ("#planet-show");
 		imageWidth = "400";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#summate-wrap");  }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#playship-wrap"); }
-		else {							  $(show).insertAfter("#planet-wrap");   }
-
 	} else if (id == "playship") {
-		show = ("#playship-show");
 		imageWidth = "200";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#summate-wrap");  }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#playship-wrap"); }
-		else {							  $(show).insertAfter("#playship-wrap"); }
-
 	} else if (id == "summate") {
-		show = ("#summate-show");
 		imageWidth = "250";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#summate-wrap");  }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#summate-wrap"); }
-		else {							  $(show).insertAfter("#summate-wrap"); }
-		
 	} else if (id == "tunnel") {
-		show = ("#tunnel-show");
 		imageWidth = "500";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#boiler-escape-wrap"); }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#tunnel-wrap");        }
-		else {							  $(show).insertAfter("#tunnel-wrap");        }
-		
 	} else if (id == "procGen") {
-		show = ("#procGen-show");
 		imageWidth = "500";
 		imageHeight = "510";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#boiler-escape-wrap"); }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#boiler-escape-wrap"); }
-		else {							  $(show).insertAfter("#procGen-wrap");       }
-		
+		horizontalHeight = 600;
 	} else if (id == "boiler-escape") {
-		show = ("#boiler-escape-show");
 		imageWidth = "500";
 		imageHeight = "300";
-		if (screenWidthLevel == 2) { 	  $(show).insertAfter("#boiler-escape-wrap"); }
-		else if (screenWidthLevel == 1) { $(show).insertAfter("#boiler-escape-wrap"); }
-		else {							  $(show).insertAfter("#boiler-escape-wrap"); }
-		
 	}
-
-	isShowOpen = true;
-	prevShow = id;
 	
+	$('.horizontal').css('height', "" + horizontalHeight + "px");
+	$('.container-horizontal').css('display', 'block');
+	$(show).css('display', 'inline-block');
+
 	//set width based on show
 	$(".slides").css("width", imageWidth + "px");
 	$(".slides div ul li").css("width", imageWidth + "px");
-	
 	$(show).addClass("open");
-	if (document.documentElement.clientWidth >= 1200) { //side-by-side layout
-		$(".slides div ul li").css("height", "300px");
-		$(".show-wrapper").css("height", "300px");
-		$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
-		if (id == "procGen") {
-			$(show).animate({height: parseInt(imageHeight) + 90 + "px" }, 500, "swing");
-		} else if (id == 'algorithms') {
-			$(show).animate({ height: parseInt(imageHeight) + 100 + "px" }, 500, "swing");
-		} else {
-			$(show).animate({ height: parseInt(imageHeight) + 50 + "px" }, 500, "swing");
-		}
-	} else { //vertical layout
-		$(".slides div ul li").css("height", imageHeight + "px");
-		$(".show-wrapper").css("height", imageHeight + "px");
-		if (id != "summate") {
-			var newMargin = 0.9 * $(".horizontal").width();
-		} else {
-			var newMargin = 0.9 * 250;
-		}
-		$(".control-next").css("margin-left", newMargin - 28.2667 + "px");
-		if (id == "summate" || id == "algorithms") {
-			$(show).animate({ height: "800px" }, 500, "swing");
-		} else if (id == "procGen") {
-			$(show).animate({ height: "800px" }, 500, "swing");
-		} else {
-			$(show).animate({ height: "700px" }, 500, "swing");
-		}
-	}
-	$(show).css("display", "inline");
-	
-	//scroll to the show
-	$('html, body').animate({
-		scrollTop: $("#" + id).offset().top + $("#" + id).height() - 100
-	}, 1000);
 }

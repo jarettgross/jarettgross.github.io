@@ -27,6 +27,15 @@ svg {
 	cursor: pointer;
 }
 
+.no-select {
+	-webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
 /** NAV BAR **/
 
 .nav {
@@ -574,6 +583,7 @@ textarea:focus {
 	width: 100%;
 	text-align: center;
 	font-size: 2em;
+	text-transform: uppercase;
 	transition: all 0.3s ease;
 	-moz-transition: all 0.3s ease;
 	-ms-transition: all 0.3s ease;
@@ -613,37 +623,29 @@ textarea:focus {
 	background-image: url("images/calendar_display.png");
 }
 
-.horizontal {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	justify-content: center;
-	width: 80%;
-	position: relative;
+.container-horizontal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+	background: rgba(0, 0, 0, 0.8);
 	display: none;
-	height: 0;
-	border-style: solid;
-	padding: 10px 0;
-	margin-top: 20px;
-	border-width: 1.5px 0;
-	background-color: rgba(255, 255, 255, 0.3);
-	text-align: center;
 }
 
-@media only screen and (min-width: 1200px) {
-	.horizontal {
-		-webkit-box-orient: horizontal;
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;
-		flex-direction: row;
-		text-align: initial;
-	}
+.horizontal {
+	width: 50%;
+    height: 500px;
+	position: absolute;
+	background-color: #FFFFFF;
+	border-radius: 4px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+	left: 0;
+	padding: 40px;
+	margin: auto;
+	display: none;
 }
 
 .slides {
@@ -705,6 +707,7 @@ textarea:focus {
 .control-next {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
+	left: 94%;
 }
 
 @media only screen and (min-width: 768px) {
@@ -721,7 +724,9 @@ textarea:focus {
 	text-align: left;
 }
 
-
+.description {
+	margin-right: 20px;
+}
 
 #dungeon {
 	width: 250px;
@@ -743,4 +748,5 @@ textarea:focus {
 	border-style: solid;
 	border-bottom-width: 1px;
 	margin-bottom: 5px;
+	text-transform: uppercase;
 }

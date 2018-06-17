@@ -65,34 +65,10 @@ $(document).ready(function() {
 	
 	
 	//Change project height, navbar width on window resize
-	$(window).resize(function(){
+	$(window).resize(function() {
 		if (!isRightArrow) {
 			var arrowWidth = 2 + (2380 / document.documentElement.clientWidth) + "vw";
 			$(".nav").css("width", arrowWidth);
-		}
-		
-		//project height, not on mobile
-		if (document.documentElement.clientWidth >= 1200) {
-			$(".slides div ul li").css("height", "500px");
-			$(".show-wrapper").css("height", "500px");
-			$(".control-next").css("margin-left", $(".slides div ul li").width() - 28.2667 + "px");
-			if (prevShow == "procGen") {
-				$("#" + prevShow + "-show").animate({ height: "600px" }, 500, "swing");
-			} else {
-				$("#" + prevShow + "-show").animate({ height: "500px" }, 500, "swing");
-			}
-		} else {
-			if (prevShow != "summate") {
-				var newMargin = 0.9 * $(".horizontal").width();
-			} else {
-				var newMargin = 0.9 * 250;
-			}
-			$(".control-next").css("margin-left", newMargin - 28.2667 + "px");
-			if (prevShow == "procGen") {
-				$("#" + prevShow + "-show").animate({ height: "1000px" }, 500, "swing");
-			} else {
-				$("#" + prevShow + "-show").animate({ height: "900px" }, 500, "swing");
-			}
 		}
 	});
 	
@@ -180,10 +156,6 @@ $(document).ready(function() {
 	//buttons for going through images of a project
     $(".control-prev").click(function () {
         $(".open .slides ul li:last-child").prependTo(".open .slides ul");
-    });
-
-    $(".control-next").click(function () {
-        $(".open .slides ul li:first-child").appendTo(".open .slides ul");
     });
 	
 	$(".container-horizontal").click(function(e) {

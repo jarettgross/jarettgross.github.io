@@ -599,6 +599,10 @@ textarea:focus {
 	background-image: url("images/playship_display.svg");
 }
 
+#evening-joe {
+	background-image: url("images/evening-joe_display.png");
+}
+
 #summate {
 	background-image: url("images/summate_display.png");
 }

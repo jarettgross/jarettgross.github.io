@@ -224,6 +224,9 @@ function prepareShow(id) {
 	} else if (id == "boiler-escape") {
 		imageWidth = "500";
 		imageHeight = "300";
+	} else if (id == "evening-joe") {
+		imageWidth = "500";
+		imageHeight = "300";
 	}
 	
 	$('.horizontal').css('height', "" + horizontalHeight + "px");

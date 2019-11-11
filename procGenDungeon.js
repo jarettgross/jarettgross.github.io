@@ -1,9 +1,11 @@
 var ROOM_TRIES = 50;
 var SQUARE_SIZE = 15;
 
-var CANVAS_WIDTH = 500; //canvas width
-var CANVAS_HEIGHT = 500; //canvas height
-var NUM_COLORS = 256; //color range for rooms
+var CANVAS_WIDTH = 500;
+var CANVAS_HEIGHT = 500;
+
+// Color range for rooms
+var NUM_COLORS = 256;
 
 var CORRIDOR_WALL_THRESHOLD = 0.333; //threshold for which side of a room the end corridor is
 

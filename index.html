@@ -1,357 +1,268 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8"> </meta>
-		<meta name="description" content=""></meta>
-		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-		<title>Jarett Gross</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.3.2/svg-morpheus.js"></script>
-		<script src="procGenDungeon.js"></script>
-		<script src="script.js"></script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <head>
+        <meta charset="UTF-8"> </meta>
+        <meta name="description" content=""></meta>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <title>Jarett Gross</title>
+        <script src="procGenDungeon.js"></script>
+        <script src="script.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-		  ga('create', 'UA-79730010-1', 'auto');
-		  ga('send', 'pageview');
-		</script>
-		<link rel="icon" type="image/png" href=""></link>
-		<link rel="stylesheet" href="style.css"></link>
-		<link rel="stylesheet" href="procGenStyle.css"></link>
-		<link href='https://fonts.googleapis.com/css?family=Amiko:400,600,700' rel='stylesheet' type='text/css'>
-	</head>
-	
-	<body>
-		<nav class="nav">
-			<div class="nav-wrapper">
-				<a class="nav-button center-btn" id="nav-projects" href="#projects">PROJECTS</a>
-				<a class="nav-button center-btn" id="nav-about" href="#about">ABOUT</a>
-				<a class="nav-button center-btn" id="nav-contact" href="#contact">CONTACT</a>
-			</div>
-		</nav>
-		
-		<div id="main-content">
-			<div class="content">
-				
-				<!-- Projects -->
-				<section class="full-content" id="projects" name="projects">
-					<div class="heading">
-						<h2 id="project-heading">JARETT GROSS</h2>
-					</div>
-					
-					<div class="project-list">
-					
-						<!-- Show Pictures of Projects -->
-						<div class="display-wrapper" id="planet-wrap">
-							<div class="display" id="planet">
-								<div class="overlay"><span class="display-text no-select">Procedural Planets</span></div>
-							</div>
-						</div>
-						<div class="display-wrapper" id="summate-wrap">
-							<div class="display" id="summate">
-								<div class="overlay"><span class="display-text no-select">Summate</span></div>
-							</div>
-						</div>
-						<div class="display-wrapper" id="evening-joe-wrap">
-							<div class="display" id="evening-joe">
-								<div class="overlay"><span class="display-text no-select">Evening, Joe!</span></div>
-							</div>
-						</div>
-						<div class="display-wrapper" id="tunnel-wrap">
-							<div class="display" id="tunnel">
-								<div class="overlay"><span class="display-text no-select">Tunnel</span></div>
-							</div>
-						</div>
-						<div class="display-wrapper" id="procGen-wrap">
-							<div class="display" id="procGen">
-								<div class="overlay"><span class="display-text no-select">Procgen Map</span></div>
-							</div>
-						</div>
-						<div class="display-wrapper" id="boiler-escape-wrap">
-							<div class="display" id="boiler-escape">
-								<div class="overlay"><span class="display-text no-select">Boiler Escape</span></div>
-							</div>
-						</div>
-						<div class="display-wrapper" id="playship-wrap">
-							<div class="display" id="playship">
-								<div class="overlay"><span class="display-text no-select">Playship</span></div>
-							</div>
-						</div>
-						
-						<!-- Show Full Projects -->
-						<div class="container-horizontal">
-							<div class="horizontal" id="planet-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<ul class="show-list">
-											<li style="background-image: url('images/planet_display.png')"></li>
-										</ul>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="description">
-										<div class="project-title">Procedural Planets</div>
-										<span>
-											I created a procedural planet generator in Javascript, using WebGL and Three.js. 
-											The planets begin with the tessellation of a sphere and are then altered depending on the type of planet being generated. Planets are procedurally generated based off a seed to generate Perlin noise to alter the height, and therefore terrain type, of that part of the planet. Planets can be formed with triangles or with hexagons and pentagons.
-											<br><br>
-											<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
-											<br>
-											<a href="http://jarettgross.me/Procedural-Planet-Generation/planets.html" class="project-link">Try it out here ➜</a>
-										</span>
-									</div>
-								</div>
-							</div>
+          ga('create', 'UA-79730010-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+        <link rel="icon" type="image/png" href=""></link>
+        <link rel="stylesheet" href="style.css"></link>
+        <link rel="stylesheet" href="procGenStyle.css"></link>
+        <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,600,700" rel="stylesheet" type="text/css">
+    </head>
+    
+    <body>
+        <div id="left-side">
+            <div id="my-info">
+                <div id="my-name">Jarett Gross</div>
+                <div id="about-me">
+                    I make games and write programs.<br>
+                    Software Developer at Amazon.<br>
+                    Alumnus from Washington University in St. Louis.
+                </div>
 
-							<div class="horizontal" id="playship-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<ul class="show-list">
-											<li style="background-image: url('images/playship_specific1.svg')"></li>
-										</ul>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="description">
-										<div class="project-title">Playship</div>
-										<span>
-											I created PlayShip, a website where people can pass along games to others. The site is 
-											community-driven and free-to-use, allowing users to submit their own 
-											games and ship them to other people. The site is built from scratch, 
-											using Node.js and Express for my backend. (Currently, it is no longer running)
-											<br><br>
-										</span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="horizontal" id="summate-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<a class="control-prev">&gt;</a>
-										<ul class="show-list">
-											<li style="background-image: url('images/summate_specific2.PNG')"></li>
-											<li style="background-image: url('images/summate_specific3.PNG')"></li>
-											<li style="background-image: url('images/summate_specific4.PNG')"></li>
-											<li style="background-image: url('images/summate_specific1.PNG')"></li>
-										</ul>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="description">
-										<div class="project-title">Summate</div>
-										<span>
-											Using Unreal Engine 4's visual scripting, I created an iPhone
-											game. Summate is a puzzle game, where the player moves a square
-											by swiping, moving over numbers to increase or decrease a player's
-											score in order to reach the exit. This was made solely by using
-											visual scripting in Unreal Engine, with the gameplay and design
-											made by me, and the art made by Joshua Gross.
-											<br><br>
-											I also ported this game to Unity and it is available on the Google Play Store (now as summ8)
-											<br><br>
-											<a class="code" href="https://play.google.com/store/apps/details?id=com.JarettGross.summ8">Check it out here ➜</a>
-										</span>
-									</div>
-								</div>
-							</div>
+                <div id="resume">
+                    <a id="resume-pdf" href="resume.pdf" target="_blank">R&eacute;sum&eacute; ➜</a>
+                </div>
+            </div>
 
-							<div class="horizontal" id="evening-joe-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<a class="control-prev">&gt;</a>
-										<ul class="show-list">
-											<li style="background-image: url('images/evening-joe_specific3.png')"></li>
-											<li style="background-image: url('images/evening-joe_specific2.png')"></li>
-											<li style="background-image: url('images/evening-joe_specific1.png')"></li>
-										</ul>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="description">
-										<div class="project-title">Evening, Joe!</div>
-										<span>
-											Using Unity, I ported my brother's game, "Morning, Joe!" and released it on Android.
-											Evening, Joe! on Android is an endless runner, where you tap the screen to jump over
-											an infinite number of bouncing balls that are rolling down the hill. Design and art are
-											created by Joshua Gross.
-											<br><br>
-											<a class="code" href="https://play.google.com/store/apps/details?id=com.JarettGross.EveningJoe">Check it out here ➜</a>
-										</span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="horizontal" id="tunnel-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<a class="control-prev">&gt;</a>
-										<ul class="show-list">
-											<li style="background-image: url('images/tunnel_specific2.png')"></li>
-											<li style="background-image: url('images/tunnel_specific1.png')"></li>
-										</ul>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="description">
-										<div class="project-title">Tunnel</div>
-										<span>
-											Using Unity3D and C#, I created a game for PC/Mac/Linux with a team
-											of four others. Tunnel is a multiplayer, first-person shooter
-											where the goal is to kill the other players. The game can be played
-											locally through a server with up to four players. The terrain of
-											Tunnel is procedurally generated and is also deformable; players
-											must utilize this terrain to gain an advantage over their opponents.
-											The game also features four different character classes, a variety of
-											weapons, and some special equipment.
-											<br><br>
-											<a class="code" href="https://github.com/jarettgross/Tunnel">Code (GitHub) ➜</a>
-										</span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="horizontal" id="procGen-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<div class="procGenCanvas">
-											<canvas id="dungeon" width="500" height="500"></canvas>
-											<div id="generateDungeon">
-												<button id="createDungeonButton" type="button">Generate Dungeon</button>
-											</div>
-										</div>
-										
-										<div id="varSliders">
-											<span id="roomTriesText">Max Rooms</span>
-											<input id="roomTriesSlider" type="range" min="2" max="99" value="50" step="1" />
-											<span id="roomTriesVar"></span>
-											<br>
-											<span id="squareSizeText">Square Size</span>
-											<input id="squareSizeSlider" type="range" min="5" max="25" value="15" step="5" />
-											<span id="squareSizeVar"></span>
-										</div>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="description">
-										<div class="project-title">Procgen Map</div>
-										<span>
-											Using JavaScript and canvas I created a procedurally generated map. Rooms are 
-											procedurally placed, each containing at least one doorway and a corridor leading 
-											to another room.
-											<br><br>
-											<a class="code" href="https://github.com/jarettgross/procedurally-generated-dungeon">Code (GitHub) ➜</a>
-										</span>
-									</div>
-								</div>
-							</div>
-							
-							<div class="horizontal" id="boiler-escape-show">
-								<div class="slides">
-									<div class="show-wrapper">
-										<a class="control-prev">&gt;</a>
-										<ul class="show-list">
-											<li style="background-image: url('images/boiler-escape_specific1.png')"></li>
-											<li style="background-image: url('images/boiler-escape_specific2.png')"></li>
-										</ul>
-									</div>
-								</div>
-								<div class="description-wrapper">
-									<div class="project-title">Boiler Escape</div>
-										<span>
-											I created a water-based 2D platformer using Unity and built for HTML5. I worked 
-											with two others, Jordan Franklin who helped with level design and Mike Manfredi 
-											who created the art assets. The game focuses on the use of a particle system to 
-											move the character around and interact with the environment.
-											<br><br>
-											<a class="code" href="https://github.com/jarettgross/Water-Platformer">Code (GitHub) ➜</a>
-											<br>
-											<a class="code" href="http://www.kongregate.com/games/nam_cap/boiler-escape">Play it on Kongregate ➜</a>
-										</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+            <div id="contact">
+                <a class="contact-info" href="https://github.com/jarettgross" target="_blank">
+                    <svg class="grayscale contact-svg" id="github-svg" enable-background="new 0 0 32 32" height="32px" version="1.0" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g>
+                            <path clip-rule="evenodd" d="M16.003,0C7.17,0,0.008,7.162,0.008,15.997  c0,7.067,4.582,13.063,10.94,15.179c0.8,0.146,1.052-0.328,1.052-0.752c0-0.38,0.008-1.442,0-2.777  c-4.449,0.967-5.371-2.107-5.371-2.107c-0.727-1.848-1.775-2.34-1.775-2.34c-1.452-0.992,0.109-0.973,0.109-0.973  c1.605,0.113,2.451,1.649,2.451,1.649c1.427,2.443,3.743,1.737,4.654,1.329c0.146-1.034,0.56-1.739,1.017-2.139  c-3.552-0.404-7.286-1.776-7.286-7.906c0-1.747,0.623-3.174,1.646-4.292C7.28,10.464,6.73,8.837,7.602,6.634  c0,0,1.343-0.43,4.398,1.641c1.276-0.355,2.645-0.532,4.005-0.538c1.359,0.006,2.727,0.183,4.005,0.538  c3.055-2.07,4.396-1.641,4.396-1.641c0.872,2.203,0.323,3.83,0.159,4.234c1.023,1.118,1.644,2.545,1.644,4.292  c0,6.146-3.74,7.498-7.304,7.893C19.479,23.548,20,24.508,20,26c0,2,0,3.902,0,4.428c0,0.428,0.258,0.901,1.07,0.746  C27.422,29.055,32,23.062,32,15.997C32,7.162,24.838,0,16.003,0z" fill-rule="evenodd"/>
+                        </g>
+                    </svg>
+                </a>
+                <a class="contact-info" href="https://www.linkedin.com/in/jarett-gross-b462a7123?trk=hp-identity-name" target="_blank">
+                    <svg class="grayscale contact-svg" id="linkedin-svg" enable-background="new 0 0 32 32" height="32px" version="1.0" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g>
+                            <path d="M32,30c0,1.104-0.896,2-2,2H2c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h28c1.104,0,2,0.896,2,2V30z"/><g><rect fill="#FFFFFF" height="14" width="4" x="7" y="11"/>
+                            <path d="M20.499,11c-2.791,0-3.271,1.018-3.499,2v-2h-4v14h4v-8c0-1.297,0.703-2,2-2c1.266,0,2,0.688,2,2v8h4v-7    C25,14,24.479,11,20.499,11z" fill="#FFFFFF"/><circle cx="9" cy="8" fill="#FFFFFF" r="2"/>
+                        </g>
+                    </svg>
+                </a>
+                <a class="contact-info" href="https://twitter.com/jarettlg" target="_blank">
+                    <svg class="grayscale contact-svg" id="twitter-svg" enable-background="new 0 0 32 32" height="32px" version="1.0" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g>
+                            <path d="M31.993,6.077C30.816,6.6,29.552,6.953,28.223,7.11c1.355-0.812,2.396-2.098,2.887-3.63  c-1.269,0.751-2.673,1.299-4.168,1.592C25.744,3.797,24.038,3,22.149,3c-3.625,0-6.562,2.938-6.562,6.563  c0,0.514,0.057,1.016,0.169,1.496C10.301,10.785,5.465,8.172,2.227,4.201c-0.564,0.97-0.888,2.097-0.888,3.3  c0,2.278,1.159,4.286,2.919,5.464c-1.075-0.035-2.087-0.329-2.972-0.821c-0.001,0.027-0.001,0.056-0.001,0.082  c0,3.181,2.262,5.834,5.265,6.437c-0.55,0.149-1.13,0.23-1.729,0.23c-0.424,0-0.834-0.041-1.234-0.117  c0.834,2.606,3.259,4.504,6.13,4.558c-2.245,1.76-5.075,2.811-8.15,2.811c-0.53,0-1.053-0.031-1.566-0.092  C2.905,27.913,6.355,29,10.062,29c12.072,0,18.675-10.001,18.675-18.675c0-0.284-0.008-0.568-0.02-0.85  C30,8.55,31.112,7.395,31.993,6.077z"/>
+                        </g>
+                    </svg>
+                </a>
+                <a class="contact-info" href="mailto:jarett@wustl.edu">
+                    <svg version="1.1" class="grayscale contact-svg" id="email-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 14" width="32px" style="enable-background:new 0 0 14 14;" xml:space="preserve">
+                        <g>
+                            <path d="M7,9L5.268,7.484l-4.952,4.245C0.496,11.896,0.739,12,1.007,12h11.986
+                                c0.267,0,0.509-0.104,0.688-0.271L8.732,7.484L7,9z"/>
+                            <path d="M13.684,2.271C13.504,2.103,13.262,2,12.993,2H1.007C0.74,2,0.498,2.104,0.318,2.273L7,8
+                                L13.684,2.271z"/>
+                            <polygon points="0,2.878 0,11.186 4.833,7.079"/>
+                            <polygon points="9.167,7.079 14,11.186 14,2.875"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
 
-				<!-- About -->
-				<section class="half-content" id="about" name="about">
-					<div class="heading other-heading">
-						<h2>ABOUT</h2>
-					</div>
-					<div class="about-wrapper">
-						<div class="p-wrapper">
-							<p>
-								My name is Jarett Gross and I'm a programmer from Great Neck, New York. I currently work as a Software Engineer at
-								Amazon and am located in Cambridge, Massachusetts.
-								I graduated from Washington University in St. Louis with a double major in Computer Science and Statistics. 
-								I have experience building backend services, front-end Android and web applications, and games.
-							</p>
-						</div>
-						<div id="resume">
-							<a id="resume-pdf" href="resume.pdf" target="_blank">R&Eacute;SUM&Eacute;</a>
-						</div>
-					</div>
-				</section>
+            <div id="projects">
+                <div id="projects-header">Projects</div>
+                <div id="projects-container">
+                    <div class="display-wrapper" id="planet-wrap">
+                        <div class="display" id="planet">
+                            <div class="overlay">
+                                <span class="display-text no-select">Procedural Planets</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="display-wrapper" id="summate-wrap">
+                        <div class="display" id="summate">
+                            <div class="overlay">
+                                <span class="display-text no-select">Summate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="display-wrapper" id="evening-joe-wrap">
+                        <div class="display" id="evening-joe">
+                            <div class="overlay">
+                                <span class="display-text no-select">Evening, Joe!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="display-wrapper" id="tunnel-wrap">
+                        <div class="display" id="tunnel">
+                            <div class="overlay">
+                                <span class="display-text no-select">Tunnel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="display-wrapper" id="procGen-wrap">
+                        <div class="display" id="procGen">
+                            <div class="overlay">
+                                <span class="display-text no-select">Procedurally Generated Map</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="display-wrapper" id="boiler-escape-wrap">
+                        <div class="display" id="boiler-escape">
+                            <div class="overlay">
+                                <span class="display-text no-select">Boiler Escape</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-				<!-- Contact -->
-				<section class="half-content" id="contact" name="contact">
-					<div class="heading">
-						<h2 id="contact-heading">CONTACT</h2>
-					</div>
-					<div class="column-wrapper">
-						<div class="column">
-							<div class="email-form">
-								<textarea class="email-text" id="email-message" rows="7" cols="50" placeholder="Your Message"></textarea>
-								<div class="form-bottom">
-									<textarea class="email-text" id="email-from" rows="1" cols="50" placeholder="Your Email Address"></textarea>
-									<span id="send-email">SEND</span>
-								</div>
-							</div>
-							
-							<div class="contact-sites">
-								<a class="contact-info" href="https://github.com/jarettgross" target="_blank">
-									<svg class="grayscale contact-svg" id="github-svg" enable-background="new 0 0 32 32" height="32px" version="1.0" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-										<g>
-											<path clip-rule="evenodd" d="M16.003,0C7.17,0,0.008,7.162,0.008,15.997  c0,7.067,4.582,13.063,10.94,15.179c0.8,0.146,1.052-0.328,1.052-0.752c0-0.38,0.008-1.442,0-2.777  c-4.449,0.967-5.371-2.107-5.371-2.107c-0.727-1.848-1.775-2.34-1.775-2.34c-1.452-0.992,0.109-0.973,0.109-0.973  c1.605,0.113,2.451,1.649,2.451,1.649c1.427,2.443,3.743,1.737,4.654,1.329c0.146-1.034,0.56-1.739,1.017-2.139  c-3.552-0.404-7.286-1.776-7.286-7.906c0-1.747,0.623-3.174,1.646-4.292C7.28,10.464,6.73,8.837,7.602,6.634  c0,0,1.343-0.43,4.398,1.641c1.276-0.355,2.645-0.532,4.005-0.538c1.359,0.006,2.727,0.183,4.005,0.538  c3.055-2.07,4.396-1.641,4.396-1.641c0.872,2.203,0.323,3.83,0.159,4.234c1.023,1.118,1.644,2.545,1.644,4.292  c0,6.146-3.74,7.498-7.304,7.893C19.479,23.548,20,24.508,20,26c0,2,0,3.902,0,4.428c0,0.428,0.258,0.901,1.07,0.746  C27.422,29.055,32,23.062,32,15.997C32,7.162,24.838,0,16.003,0z" fill-rule="evenodd"/>
-										</g>
-									</svg>
-								</a>
-								<a class="contact-info" href="https://www.linkedin.com/in/jarett-gross-b462a7123?trk=hp-identity-name" target="_blank">
-									<svg class="grayscale contact-svg" id="linkedin-svg" enable-background="new 0 0 32 32" height="32px" version="1.0" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-										<g>
-											<path d="M32,30c0,1.104-0.896,2-2,2H2c-1.104,0-2-0.896-2-2V2c0-1.104,0.896-2,2-2h28c1.104,0,2,0.896,2,2V30z"/><g><rect fill="#FFFFFF" height="14" width="4" x="7" y="11"/>
-											<path d="M20.499,11c-2.791,0-3.271,1.018-3.499,2v-2h-4v14h4v-8c0-1.297,0.703-2,2-2c1.266,0,2,0.688,2,2v8h4v-7    C25,14,24.479,11,20.499,11z" fill="#FFFFFF"/><circle cx="9" cy="8" fill="#FFFFFF" r="2"/>
-										</g>
-									</svg>
-								</a>
-								<a class="contact-info" href="https://twitter.com/jarettlg" target="_blank">
-									<svg class="grayscale contact-svg" id="twitter-svg" enable-background="new 0 0 32 32" height="32px" version="1.0" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-										<g>
-											<path d="M31.993,6.077C30.816,6.6,29.552,6.953,28.223,7.11c1.355-0.812,2.396-2.098,2.887-3.63  c-1.269,0.751-2.673,1.299-4.168,1.592C25.744,3.797,24.038,3,22.149,3c-3.625,0-6.562,2.938-6.562,6.563  c0,0.514,0.057,1.016,0.169,1.496C10.301,10.785,5.465,8.172,2.227,4.201c-0.564,0.97-0.888,2.097-0.888,3.3  c0,2.278,1.159,4.286,2.919,5.464c-1.075-0.035-2.087-0.329-2.972-0.821c-0.001,0.027-0.001,0.056-0.001,0.082  c0,3.181,2.262,5.834,5.265,6.437c-0.55,0.149-1.13,0.23-1.729,0.23c-0.424,0-0.834-0.041-1.234-0.117  c0.834,2.606,3.259,4.504,6.13,4.558c-2.245,1.76-5.075,2.811-8.15,2.811c-0.53,0-1.053-0.031-1.566-0.092  C2.905,27.913,6.355,29,10.062,29c12.072,0,18.675-10.001,18.675-18.675c0-0.284-0.008-0.568-0.02-0.85  C30,8.55,31.112,7.395,31.993,6.077z"/>
-										</g>
-									</svg>
-								</a>
-								<a class="contact-info" href="mailto:jarett@wustl.edu">
-									<svg version="1.1" class="grayscale contact-svg" id="email-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 14 14" width="32px" style="enable-background:new 0 0 14 14;" xml:space="preserve">
-										<g>
-											<path d="M7,9L5.268,7.484l-4.952,4.245C0.496,11.896,0.739,12,1.007,12h11.986
-												c0.267,0,0.509-0.104,0.688-0.271L8.732,7.484L7,9z"/>
-											<path d="M13.684,2.271C13.504,2.103,13.262,2,12.993,2H1.007C0.74,2,0.498,2.104,0.318,2.273L7,8
-												L13.684,2.271z"/>
-											<polygon points="0,2.878 0,11.186 4.833,7.079 		"/>
-											<polygon points="9.167,7.079 14,11.186 14,2.875 		"/>
-										</g>
-								</a>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
-		</div>
-	</body>
+        <div id="right-side">
+            <div class="project-view hide" id="planet-show">
+                <div class="project-title">Procedural Planets</div>
+                <div class="project-description">
+                    <span>
+                        I created a procedural planet generator in Javascript, using WebGL and Three.js. 
+                        The planets begin with the tessellation of a sphere and are then altered depending on the type of planet being generated. 
+                        Planets are procedurally generated based off a seed to generate Perlin noise to alter the height, and therefore terrain type, of that part of the planet. 
+                        Planets can be formed with triangles or with hexagons and pentagons.
+                        <div class="link-buttons">
+                            <a class="code" href="https://github.com/jarettgross/Procedural-Planet-Generator" target="_blank">Code <img class="out-link-svg" src="svg/out-link.svg"></a>
+                            <a href="http://jarettgross.me/Procedural-Planet-Generation/planets.html" class="project-link" target="_blank">Try it <img class="out-link-svg" src="svg/out-link.svg"></a>
+                        </div>
+                    </span>
+                </div>
+                <div class="project-images-container">
+                    <img class="project-image" src="images/planet_display.png"/>
+                </div>
+            </div>
+            
+            <div class="project-view hide" id="summate-show">
+                <div class="project-title">Summate</div>
+                <div class="project-description">
+                    <span>
+                        Using Unreal Engine 4's visual scripting, I created an iPhone
+                        game. Summate is a puzzle game, where the player moves a square
+                        by swiping, moving over numbers to increase or decrease a player's
+                        score in order to reach the exit. This was made solely by using
+                        visual scripting in Unreal Engine, with the gameplay and design
+                        made by me, and the art made by Joshua Gross.
+                        <br><br>
+                        I also ported this game to Unity and it is available on the Google Play Store (now as summ8).
+                        <div class="link-buttons">
+                            <a class="code" href="https://play.google.com/store/apps/details?id=com.JarettGross.summ8" target="_blank">Play <img class="out-link-svg" src="svg/out-link.svg"></a>
+                        </div>
+                </span>
+                </div>
+                <div class="project-images-container">
+                    <img class="project-image project-image-vertical" src="images/summate_specific2.PNG"/>
+                    <img class="project-image project-image-vertical" src="images/summate_specific3.PNG"/>
+                    <img class="project-image project-image-vertical" src="images/summate_specific4.PNG"/>
+                    <img class="project-image project-image-vertical" src="images/summate_specific1.PNG"/>
+                </div>
+            </div>
+
+            <div class="project-view hide" id="evening-joe-show">
+                <div class="project-title">Evening, Joe!</div>
+                <div class="project-description">
+                    <span>
+                        Using Unity, I ported my brother's game, "Morning, Joe!" and released it on Android.
+                        Evening, Joe! on Android is an endless runner, where you tap the screen to jump over
+                        an infinite number of bouncing balls that are rolling down the hill. Design and art are
+                        created by Joshua Gross.
+                        <div class="link-buttons">
+                            <a class="code" href="https://play.google.com/store/apps/details?id=com.JarettGross.EveningJoe" target="_blank">Play <img class="out-link-svg" src="svg/out-link.svg"></a>
+                        </div>
+                    </span>
+                </div>
+                <div class="project-images-container">
+                    <img class="project-image" src="images/evening-joe_specific3.png"/>
+                    <img class="project-image" src="images/evening-joe_specific2.png"/>
+                    <img class="project-image" src="images/evening-joe_specific1.png"/>
+                </div>
+            </div>
+            
+            <div class="project-view hide" id="tunnel-show">
+                <div class="project-title">Tunnel</div>
+                <div class="project-description">
+                    <span>
+                        Using Unity3D and C#, I created a game for PC/Mac/Linux with a team
+                        of four others. Tunnel is a multiplayer, first-person shooter
+                        where the goal is to kill the other players. The game can be played
+                        locally through a server with up to four players. The terrain of
+                        Tunnel is procedurally generated and is also deformable; players
+                        must utilize this terrain to gain an advantage over their opponents.
+                        The game also features four different character classes, a variety of
+                        weapons, and some special equipment.
+                        <div class="link-buttons">
+                            <a class="code" href="https://github.com/jarettgross/Tunnel" target="_blank">Code <img class="out-link-svg" src="svg/out-link.svg"></a>
+                        </div>
+                    </span>
+                </div>
+                <div class="project-images-container">
+                    <img class="project-image" src="images/tunnel_specific2.png"/>
+                    <img class="project-image" src="images/tunnel_specific1.png"/>
+                </div>
+            </div>
+            
+            <div class="project-view hide" id="procGen-show">
+                <div class="project-title">Procedurally Generated Map</div>
+                <div class="project-description">
+                    <span>
+                        Using JavaScript and canvas I created a procedurally generated map. Rooms are 
+                        procedurally placed, each containing at least one doorway and a corridor leading 
+                        to another room.
+                        <div class="link-buttons">
+                            <a class="code" href="https://github.com/jarettgross/procedurally-generated-dungeon" target="_blank">Code <img class="out-link-svg" src="svg/out-link.svg"></a>
+                        </div>
+                    </span>
+                </div>
+
+                <div class="project-images-container">
+                    <div class="procGenCanvas">
+                        <canvas id="dungeon" width="500" height="500"></canvas>
+                        <div id="generateDungeon">
+                            <button id="createDungeonButton" type="button">Generate Dungeon</button>
+                        </div>
+                    </div>
+                    
+                    <div id="varSliders">
+                        <span class="proc-gen-label" id="roomTriesText">Max Rooms</span>
+                        <input id="roomTriesSlider" type="range" min="2" max="99" value="50" step="1" />
+                        <span class="proc-gen-value" id="roomTriesVar"></span>
+                        <br>
+                        <span class="proc-gen-label" id="squareSizeText">Square Size</span>
+                        <input id="squareSizeSlider" type="range" min="5" max="25" value="15" step="5" />
+                        <span class="proc-gen-value" id="squareSizeVar"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-view hide" id="boiler-escape-show">
+                <div class="project-title">Boiler Escape</div>
+                <div class="project-description">
+                    <span>
+                        I created a water-based 2D platformer using Unity and built for HTML5. I worked 
+                        with two others, Jordan Franklin who helped with level design and Mike Manfredi 
+                        who created the art assets. The game focuses on the use of a particle system to 
+                        move the character around and interact with the environment.
+                        <div class="link-buttons">
+                            <a class="code" href="https://github.com/jarettgross/Water-Platformer" target="_blank">Code <img class="out-link-svg" src="svg/out-link.svg"></a>
+                            <a class="code" href="http://www.kongregate.com/games/nam_cap/boiler-escape" target="_blank">Play <img class="out-link-svg" src="svg/out-link.svg"></a>
+                        </div>
+                </span>
+                </div>
+                <div class="project-images-container">
+                    <img class="project-image" src="images/boiler-escape_specific1.png"/>
+                    <img class="project-image" src="images/boiler-escape_specific2.png"/>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

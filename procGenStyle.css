@@ -1,3 +1,17 @@
+.procGenCanvas {
+    text-align: center;
+}
+
+.proc-gen-label {
+    display: inline-block;
+    width: 150px;
+}
+
+.proc-gen-value {
+    display: inline-block;
+    width: 50px;
+}
+
 #varSliders {
     text-align: center;
 }
@@ -12,18 +26,21 @@
 	margin-bottom: 15px;
     display: block;
     padding: 5px 10px;
-	color: #FFFFFF;
-	background-color: #545454;
+	color: #ffffff;
+	background-color: #ca5a5a;
 	border-radius: 5px;
     cursor: pointer;
 	font-size: 1em;
+	transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
 }
 
 @media only screen and (min-width: 768px) {
 	#createDungeonButton:hover {
-		-webkit-box-shadow: 0 0 5px #383C3D;
-		-moz-box-shadow: 0 0 5px #383C3D;
-		box-shadow: 0 0 5px #383C3D;
+		background-color: #9e4646;
 	}
 }
 
@@ -39,19 +56,19 @@ input[type=range]::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 7px;
 	cursor: pointer;
-	box-shadow: 0px 0px 0px #545454;
+	box-shadow: 0px 0px 0px #ca5a5a;
 	background: #FFFFFF;
 	border-radius: 5px;
-	border: 1px solid #545454;
+	border: 1px solid #ca5a5a;
 }
 
 input[type=range]::-webkit-slider-thumb {
-	box-shadow: 0px 0px 0px #545454;
+	box-shadow: 0px 0px 0px #ca5a5a;
 	border: 1px solid #545454;
 	height: 16px;
 	width: 26px;
 	border-radius: 6px;
-	background: #545454;
+	background: #ca5a5a;
 	cursor: pointer;
 	-webkit-appearance: none;
 	margin-top: -5.5px;
@@ -66,19 +83,19 @@ input[type=range]::-moz-range-track {
 	height: 7px;
 	cursor: pointer;
 	animate: 0.2s;
-	box-shadow: 0px 0px 0px #545454;
+	box-shadow: 0px 0px 0px #ca5a5a;
 	background: #FFFFFF;
 	border-radius: 5px;
-	border: 1px solid #545454;
+	border: 1px solid #ca5a5a;
 }
 
 input[type=range]::-moz-range-thumb {
-	box-shadow: 0px 0px 0px #545454;
-	border: 1px solid #545454;
+	box-shadow: 0px 0px 0px #ca5a5a;
+	border: 1px solid #ca5a5a;
 	height: 16px;
 	width: 26px;
 	border-radius: 6px;
-	background: #545454;
+	background: #ca5a5a;
 	cursor: pointer;
 }
 

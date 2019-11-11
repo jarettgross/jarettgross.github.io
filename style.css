@@ -20,7 +20,13 @@ body {
     width: 100%;
     font-family: "Overpass", sans-serif;
     font-weight: 400;
-    margin-left: 70px;
+    margin-left: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+        margin-left: 70px;
+    }
 }
 
 a {
@@ -288,10 +294,6 @@ svg {
     width: 80%;
 }
 
-.project-view {
-    margin-top: 50px;
-}
-
 @media only screen and (min-width: 768px) {
     #right-side {
         background-color: transparent;
@@ -343,10 +345,6 @@ svg {
     -o-transition: all 0.2s ease;
 }
 
-.code:hover {
-    background-color: #2f6488;
-}
-
 .project-link {
     background-color: #ca5a5a;
     border-radius: 5px;
@@ -358,8 +356,14 @@ svg {
     -o-transition: all 0.2s ease;
 }
 
-.project-link:hover {
-    background-color: #9e4646;
+@media only screen and (min-width: 768px) {
+    .code:hover {
+        background-color: #2f6488;
+    }
+
+    .project-link:hover {
+        background-color: #9e4646;
+    }
 }
 
 .project-images-container {

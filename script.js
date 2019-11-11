@@ -17,6 +17,8 @@ function initProjectControls() {
             document.querySelector(`#${id}-show`).classList.remove("hide");
             openProjectId = id;
 
+            document.querySelector("#right-side").classList.remove("hide");
+
             if (window.innerWidth < 768) {
                 document.querySelector("#overlay-dim").classList.remove("hide");
             }
@@ -26,6 +28,7 @@ function initProjectControls() {
     document.querySelector("#overlay-dim").addEventListener("click", (event) => {
         event.target.classList.add("hide");
         document.querySelector(`#${openProjectId}-show`).classList.add("hide");
+        document.querySelector("#right-side").classList.add("hide");
     });
 }
 

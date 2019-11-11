@@ -11,13 +11,22 @@ function initProjectControls() {
     displays.forEach((display) => {
         display.addEventListener("click", (event) => {
             const id = event.target.parentElement.parentElement.id;
-            if (openProjectId !== undefined) {
-                document.querySelector(`#${openProjectId}-show`).classList.add("hide");            
+
+            if (id === openProjectId) {
+                document.querySelector(`#${openProjectId}-show`).classList.add("hide");
+                openProjectId = undefined;
+                return;
             }
+
+            if (openProjectId !== undefined) {
+                document.querySelector(`#${openProjectId}-show`).classList.add("hide");
+            }
+
             document.querySelector(`#${id}-show`).classList.remove("hide");
             openProjectId = id;
 
             document.querySelector("#right-side").classList.remove("hide");
+            document.querySelector("#right-side").scrollTop = 0;
 
             if (window.innerWidth < 768) {
                 document.querySelector("#overlay-dim").classList.remove("hide");

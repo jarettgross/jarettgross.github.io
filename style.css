@@ -89,17 +89,17 @@ svg {
 }
 
 #about-me {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 300;
-    line-height: 36px;
-    margin-top: 30px;
+    line-height: 50px;
+    margin-top: 20px;
 }
 
 #resume {
     border-radius: 5px;
     display: inline-block;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 300;
     margin-top: 20px;
 }
 
@@ -110,37 +110,46 @@ svg {
 /** Contact **/
 
 #contact {
-    margin-top: 30px;
-}
-
-.contact-sites {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     flex: 1;
+    flex-direction: column;
     justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
-.contact-info {
-    margin-right: 20px;
+.contact-text {
+    color: #000000;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.contact-text a {
+    color: #000000;
+}
+
+.contact-text svg {
+    margin-right: 12px;
 }
 
 @media only screen and (min-width: 768px) {
-    .contact-info:hover #github-svg {
+    .contact-text a:hover #github-svg {
         fill: #181616;
     }
 
-    .contact-info:hover #linkedin-svg {
+    .contact-text a:hover #linkedin-svg {
         fill: #007bb5;
     }
 
-    .contact-info:hover #twitter-svg {
+    .contact-text a:hover #twitter-svg {
         fill: #55acee;
     }
 
-    .contact-info:hover #email-svg {
-        fill: #030104;
+    .contact-text a:hover #email-svg {
+        fill: #448cbd;
     }
 }
 
@@ -158,12 +167,13 @@ svg {
 
 #projects {
     margin-top: 50px;
+    margin-bottom: 100px;
 }
 
 #projects-header {
     color: #ca5a5a;
     font-size: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 #projects-container {
@@ -187,8 +197,9 @@ svg {
         justify-content: space-between;
         margin: 20px 0px;
     }
+    
     .display-wrapper {
-        margin: 20px 0px;
+        margin: 15px 0px;
         width: 30%;
     }
 }
@@ -312,7 +323,7 @@ svg {
     #right-side {
         background-color: transparent;
         float: right;
-        max-height: 800px;
+        max-height: 70%;
         left: 55%;
         overflow-x: hidden;
         overflow-y: auto;
@@ -321,10 +332,6 @@ svg {
         top: 12%;
         transform: none;
         width: 30%;
-    }
-
-    .project-view {
-        margin-top: 100px
     }
 }
 
@@ -357,6 +364,7 @@ svg {
     -ms-transition: all 0.2s ease;
     -webkit-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
+    width: 100px;
 }
 
 .project-link {
@@ -381,15 +389,19 @@ svg {
 }
 
 .project-images-container {
+    margin: auto;
     margin-top: 80px;
+    text-align: center;
 }
 
 .project-image {
-    height: 200px;
+    width: 80%;
+    height: auto;
     margin: 0 20px 20px 0;
 }
 
 .project-image-vertical {
-    height: 350px;
+    height: 300px;
+    width: auto;
     margin: 0 20px;
 }

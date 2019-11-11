@@ -49,7 +49,24 @@ svg {
 /** Left Side **/
 
 #left-side {
-    width: 40%;
+    width: 100%;
+}
+
+#overlay-dim {
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    position: fixed;
+    opacity: 0.7;
+}
+
+@media only screen and (min-width: 768px) {
+    #left-side {
+        width: 40%;
+    }
 }
 
 /** About Me **/
@@ -126,7 +143,7 @@ svg {
 }
 
 .grayscale { 
-    fill: #545454;
+    fill: #6e6e6e;
 }
 
 /** Projects **/
@@ -149,15 +166,19 @@ svg {
     display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: left;
 }
 
 .display-wrapper {
-    margin: 20px 0px;
+    margin: 20px 10px;
     width: 40%;
 }
 
 @media only screen and (min-width: 1600px) {
+    #projects-container {
+        justify-content: space-between;
+        margin: 20px 0px;
+    }
     .display-wrapper {
         margin: 20px 0px;
         width: 30%;
@@ -175,12 +196,12 @@ svg {
     width: 100%;
 }
 
-.display:hover > .overlay {
-    background-color: #000000;
-    opacity: 0.8;
-}
-
 @media only screen and (min-width: 768px) {
+    .display:hover > .overlay {
+        background-color: #000000;
+        opacity: 0.8;
+    }
+
     .display:hover > .overlay > .display-text {
         opacity: 1;
     }
@@ -255,19 +276,40 @@ svg {
 /** Right Side **/
 
 #right-side {
-    float: right;
-    max-height: 800px;
-    left: 55%;
+    background-color: #ffffff;
+    max-height: 70%;
     overflow-x: hidden;
     overflow-y: auto;
-    padding-right: 30px;
+    padding: 30px;
     position: fixed;
-    top: 12%;
-    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
 }
 
 .project-view {
-    margin-top: 100px;
+    margin-top: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+    #right-side {
+        background-color: transparent;
+        float: right;
+        max-height: 800px;
+        left: 55%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-right: 30px;
+        position: fixed;
+        top: 12%;
+        transform: none;
+        width: 30%;
+    }
+
+    .project-view {
+        margin-top: 100px
+    }
 }
 
 .project-title {

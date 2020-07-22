@@ -140,9 +140,9 @@ function initControls() {
             isRight = true;
         } else if (e.keyCode === 40) {
             isDown = true;
-        } else if (e.keyCode === 61) {
+        } else if (e.code === 'Equal') {
             isPlus =  true;
-        } else if (e.keyCode === 173) {
+        } else if (e.code === 'Minus') {
             isMinus = true;
         }
     }
@@ -156,9 +156,9 @@ function initControls() {
             isRight = false;
         } else if (e.keyCode === 40) {
             isDown = false;
-        } else if (e.keyCode === 61) {
+        } else if (e.code === 'Equal') {
             isPlus =  false;
-        } else if (e.keyCode === 173) {
+        } else if (e.code === 'Minus') {
             isMinus = false;
         }
     }
